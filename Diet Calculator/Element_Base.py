@@ -3,7 +3,7 @@ class Element_Base:
     
     #types = [type, ...]
     #the types of the 
-    def __init__(self, types):
+    def __init__(self, name, types):
 
         self.types = types
         self.values = []
@@ -16,4 +16,10 @@ class Element_Base:
 
         for i in range(0, len(self.types)):
             self.values.append(self.types[i](attributes[i]))
+
+    def get_types(self):
+        return self.types
+
+    def get_values(self):
+        return self.values
 
