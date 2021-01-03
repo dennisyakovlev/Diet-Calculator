@@ -22,6 +22,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Diet_Calculator.py" />
+    <Compile Include="Element_Base.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="File_Manager.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="File_Utilities.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Nutrition_Fact.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

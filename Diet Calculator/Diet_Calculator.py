@@ -1,9 +1,3 @@
-import pytesseract as tess
-from PIL import Image
+import File_Utilities as f
 
-tess.pytesseract.tesseract_cmd = r"C:\Users\jboob\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
-
-img = Image.open("pork.png")
-text = tess.image_to_string(img)
-
-print(text)
+f.Write.nmbrNutritionFact("test", 1, 2, 3, 4, 5, 6, 7, 8, 9)
