@@ -1,3 +1,17 @@
-import File_Utilities as f
+import File_Manager as f
+import Nutrition_Fact as n
 
-f.Write.nmbrNutritionFact("test", 1, 2, 3, 4, 5, 6, 7, 8, 9)
+file = f.File("nutrition", n.Nutrition_Fact)
+
+arr = [1,2,3,4,5,6,7,8,9]
+
+var1 = n.Nutrition_Fact("test1", arr)
+var2 = n.Nutrition_Fact("test2", [item * 2 for item in arr])
+var3 = n.Nutrition_Fact("test3", [item * 3 for item in arr])
+
+file.add_elem(var1)
+file.add_elem(var2)
+file.add_elem(var3)
+
+test = file.get_elem("test2");
+print(test.get_values())
