@@ -1,7 +1,13 @@
+NOT_ALLOWED = ["_", "_names", ".txt"]
+
 #base class for an element that wants to work with File class
 class Element_Base:
     
     def __init__(self, name, values):
+
+        for item in NOT_ALLOWED:
+            if item in name:
+                print(name, "contains illegal character", item)
 
         self.name = name
 
