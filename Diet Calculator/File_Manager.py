@@ -1,20 +1,24 @@
 import os
 from Element_Base import Element_Base as Base
 
-#NAME of element should NOT be able to have _
-
 class File:
 
     nameExtension = "_names"
+    temporaryExtension = "_temp"
     fileExtension = ".txt"
 
     #name is file name
     #elementType is in Base family of classes
     def __init__(self, name, elementType):
         
+        #the type of the element to be added
         self._type = elementType
+        #the name of the file containing the information of the elements
         self.fileName = name + self.fileExtension
+        #the name of the file containing the names of the elements
         self.namesFileName = name + self.nameExtension + self.fileExtension
+        #the name of the temporary file
+        self.tempFileName = name + self.temporaryExtension + self.fileExtension
 
         if not os.path.isfile(self.fileName):
             file = open(self.fileName, "w+")
@@ -87,6 +91,45 @@ class File:
             line = file.readline()
 
         return self._type(name, info)
+
+    #need to remove name from names file aswell
+    #remove element from file as the set type using the given name
+    def remove_elem(self, name):
+        
+        namesFile = open(self.namesFileName, "r")
+        if self.check_name(name, namesFile):
+            print(name, "not found")
+            exit()
+        namesFile.close()
+
+        newFile = []
+        file = open(self.fileName, "r")
+        #read all line except the element
+        line = file.readline()
+        while line != "":
+            if self.nameExtension in line:
+                if line.strip() == (name + self.nameExtension):
+                    line = file.readline()
+                    while (self.nameExtension not in line) and (line != ""):
+                        line = file.readline()
+            newFile.append(line)
+            line = file.readline()
+        #when last element in file is requested there is blank item in list
+        if newFile[-1] == "":
+            newFile.pop()
+        file.close()
+
+        #write to temporary file
+        tempFile = open(self.tempFileName, "w")
+        for item in newFile:
+            tempFile.write(item)
+        tempFile.close()
+
+        #swap temporary and new file
+        os.remove(self.fileName)
+        os.rename(self.tempFileName, self.fileName)
+
+            
 
     #file is opened for reading
     #checks if name is already exists, return True if not taken

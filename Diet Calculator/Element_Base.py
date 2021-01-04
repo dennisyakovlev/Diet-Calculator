@@ -8,6 +8,7 @@ class Element_Base:
         for item in NOT_ALLOWED:
             if item in name:
                 print(name, "contains illegal character", item)
+                exit()
 
         self.name = name
 

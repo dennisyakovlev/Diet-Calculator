@@ -1,4 +1,4 @@
-test1_names
+factA_names
 1
 2
 3
@@ -8,16 +8,6 @@ test1_names
 7
 8
 9
-test2_names
-2
-4
-6
-8
-10
-12
-14
-16
-18
 test3_names
 3
 6
