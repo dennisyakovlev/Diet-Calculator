@@ -32,11 +32,11 @@ class File:
     def add_elem(self, element):
 
         #cast to a base element
-        baseElement = self.cast_to_base(element)
+        baseElement = self.__cast_to_base(element)
 
         #write to names file
         namesFile = open(self.namesFileName, "r+")
-        if not self.check_name(baseElement.get_name(), namesFile):
+        if not self.__check_name(baseElement.get_name(), namesFile):
             print(baseElement.get_name(), "name is taken")
             exit()
 
@@ -64,7 +64,7 @@ class File:
 
         #check to see if there exists an element with the specified name
         namesFile = open(self.namesFileName, "r")
-        if self.check_name(name, namesFile):
+        if self.__check_name(name, namesFile):
             print(name, "not found")
             exit()
         namesFile.close()
@@ -97,11 +97,42 @@ class File:
     def remove_elem(self, name):
         
         namesFile = open(self.namesFileName, "r")
-        if self.check_name(name, namesFile):
+        if self.__check_name(name, namesFile):
             print(name, "not found")
             exit()
         namesFile.close()
 
+        self.__remoe_elem_name(name)
+        self.__remove_elem_values(name)       
+    
+    #delete name from names file
+    def __remoe_elem_name(self, name):
+        
+        newFile = []
+        file = open(self.namesFileName, "r")
+        #read all line except the element
+        line = file.readline()
+        while line != "":
+            if name == line.strip():
+                line = file.readline()
+            newFile.append(line)
+            line = file.readline()
+        #when last element in file is requested there is blank item in list
+        file.close()
+
+        #write to temporary file
+        tempFile = open(self.tempFileName, "w")
+        for item in newFile:
+            tempFile.write(item)
+        tempFile.close()
+
+        #swap temporary and new file
+        os.remove(self.namesFileName)
+        os.rename(self.tempFileName, self.namesFileName)
+
+    #delete element from file containing values 
+    def __remove_elem_values(self, name):
+        
         newFile = []
         file = open(self.fileName, "r")
         #read all line except the element
@@ -129,11 +160,9 @@ class File:
         os.remove(self.fileName)
         os.rename(self.tempFileName, self.fileName)
 
-            
-
     #file is opened for reading
     #checks if name is already exists, return True if not taken
-    def check_name(self, name, file):
+    def __check_name(self, name, file):
         
         lines = file.readlines()
         for line in lines:
@@ -141,7 +170,7 @@ class File:
                 return False
         return True
             
-    def cast_to_base(self, elem):
+    def __cast_to_base(self, elem):
 
         return Base(elem.get_name(), elem.get_values())
 
