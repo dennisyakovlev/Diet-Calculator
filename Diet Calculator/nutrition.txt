@@ -7,15 +7,6 @@ Test_names
 3
 18
 4
-Test2_names
-50
-50
-50
-50
-50
-50
-50
-50
 Name_names
 1
 1

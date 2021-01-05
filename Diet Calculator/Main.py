@@ -7,8 +7,9 @@ import sys
 class Main:
 
     def __init__(self):
-
-       self.dict = {"EXIT": self.__EXIT, "N": self.__ADD_NUTRITION}
+        
+       self.commands = ["EXIT", "NUTRITION", "FOOD"]
+       self.dict = {self.commands[0]: self.__EXIT, self.commands[1]: self.__NUTRITION}
 
        self.nuritionFile = FileType(CONST.NUTRITION_FILE_NAME, NutritionType)
        self.foodFile = FileType(CONST.FOOD_FILE_NAME, FoodType)
@@ -23,25 +24,52 @@ class Main:
            print()
 
            #run function call
-           self.dict.get(inp)()
+           self.dict[inp]()
 
            print()
 
     def __print_commands(self):
         
         print("Commands:\n" + 
-              "Add a nutritional information: N\n" + 
-              "Exit the program: EXIT")
+              "Add a nutritional information: " + self.commands[1] + "\n" + 
+              "Exit the program: " + self.commands[0])
 
     def __EXIT(self):
 
         sys.exit()
 
-    def __ADD_NUTRITION(self):
+    def __NUTRITION(self):
+        
+        inp = input("Remove nutrition fact: REMOVE\n" +
+                     "Add nutrition fact: ADD\n" +
+                     "Get nutrition fact info: GET\n")
 
-        #get name on nutrition fact
-        name = input("Enter nutrition fact name: ")
         print()
+
+        name = input("Enter nutrition fact name: ")
+
+        if inp == "REMOVE":
+            self.__DELETE_NUTRITION(name)
+        elif inp == "ADD":
+            self.__ADD_NUTRITION(name)
+        elif inp == "GET":
+            self.__GET_NUTRITION(name)
+            
+    def __GET_NUTRITION(self, name):
+
+        if not self.nuritionFile.elem_exists(name):
+            print("Nurition fact with this name does not exist")
+        else:
+            self.nuritionFile.get_elem(name)
+
+    def __DELETE_NUTRITION(self, name):
+        
+        if not self.nuritionFile.elem_exists(name):
+            print("Nurition fact with this name does not exist")
+        else:
+            self.nuritionFile.remove_elem(name)
+
+    def __ADD_NUTRITION(self, name):
 
         if self.nuritionFile.elem_exists(name):
             print("Nurition fact with this name already exists")
