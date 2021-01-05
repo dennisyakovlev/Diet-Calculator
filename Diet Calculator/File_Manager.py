@@ -28,6 +28,13 @@ class File:
             fileNames = open(self.namesFileName, "w+")
             fileNames.close()
 
+    #to check if a name exists
+    #return true if the name already exists
+    def elem_exists(self, name):
+        
+        file = open(self.namesFileName)
+        return not self.__check_name(name, file)        
+
     #add an element of the given type to teh file
     def add_elem(self, element):
 
@@ -86,7 +93,7 @@ class File:
 
         #read the element information
         info = []
-        while self.nameExtension not in line:
+        while (self.nameExtension not in line) and (line != ""):
             info.append(line.strip())
             line = file.readline()
 
