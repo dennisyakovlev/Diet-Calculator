@@ -36,8 +36,8 @@ class Nutrition_Fact(E_Base.Element_Base):
 
     def get_fat(self):
 
-        return self.get_trans + self.get_saturdated
+        return self.get_trans() + self.get_saturdated()
 
     def get_carbs(self):
 
-        return self.get_fiber + self.get_sugar
+        return self.get_fiber() + self.get_sugar()

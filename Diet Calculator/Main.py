@@ -23,8 +23,11 @@ class Main:
 
            print()
 
-           #run function call
-           self.dict[inp]()
+           if inp not in self.dict:
+               print("Enter valid command")
+           else:
+               #run function call
+               self.dict[inp]()
 
            print()
 
@@ -38,37 +41,44 @@ class Main:
 
         sys.exit()
 
+    def __FOOD(self):
+
+        self.__options("food", [self.__GET_FOOD, self.__DELETE_FOOD, self.__ADD_FOOD])
+    def __GET_FOOD(self, name):
+        pass
+    def __DELETE_FOOD(self, name):
+        pass
+    def __ADD_FOOD(self, name):
+        pass
+
+
     def __NUTRITION(self):
-        
-        inp = input("Remove nutrition fact: REMOVE\n" +
-                     "Add nutrition fact: ADD\n" +
-                     "Get nutrition fact info: GET\n")
-
-        print()
-
-        name = input("Enter nutrition fact name: ")
-
-        if inp == "REMOVE":
-            self.__DELETE_NUTRITION(name)
-        elif inp == "ADD":
-            self.__ADD_NUTRITION(name)
-        elif inp == "GET":
-            self.__GET_NUTRITION(name)
-            
+                
+        self.__options("nutrition fact", [self.__DELETE_NUTRITION, self.__ADD_NUTRITION, self.__GET_NUTRITION])   
     def __GET_NUTRITION(self, name):
 
         if not self.nuritionFile.elem_exists(name):
             print("Nurition fact with this name does not exist")
         else:
-            self.nuritionFile.get_elem(name)
+            fact = self.nuritionFile.get_elem(name)
 
+            print("Name:", name)
+            print("Calories:", fact.get_calories())
+            print("Fat:", fact.get_fat())
+            print("     Saturated Fat:", fact.get_saturdated())
+            print("     Trans Fat:", fact.get_trans())
+            print("Cholesterol:", fact.get_chol())
+            print("Sodium:", fact.get_sodium())
+            print("Carbohydrates:", fact.get_carbs())
+            print("     Fiber", fact.get_fiber())
+            print("     Sugar", fact.get_sugar())
+            print("Protien", fact.get_protien())
     def __DELETE_NUTRITION(self, name):
         
         if not self.nuritionFile.elem_exists(name):
             print("Nurition fact with this name does not exist")
         else:
             self.nuritionFile.remove_elem(name)
-
     def __ADD_NUTRITION(self, name):
 
         if self.nuritionFile.elem_exists(name):
@@ -86,3 +96,22 @@ class Main:
             values.append(input("Enter grams of protien: "))
 
             self.nuritionFile.add_elem(NutritionType(name, values))
+
+    #toPrint - what should be printed 
+    #functions - list of functions to be called with input as item name
+    def __options(self, toPrint, functions):
+
+        inp = input("Remove " + toPrint + ": REMOVE\n" +
+                    "Add  " + toPrint + ": ADD\n" +
+                    "Get " + toPrint + ": GET\n")
+
+        print()
+
+        name = input("Enter " + toPrint + " name: ")
+
+        if inp == "REMOVE":
+            functions[0](name)
+        elif inp == "ADD":
+            functions[1](name)
+        elif inp == "GET":
+            functions[2](name)
