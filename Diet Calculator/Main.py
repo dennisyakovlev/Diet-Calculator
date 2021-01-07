@@ -2,6 +2,7 @@ import CONSTANTS as CONST
 from File_Manager import File as FileType
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 from Food import Food as FoodType
+from Food import get_food_info as get_food
 import sys
 
 class Main:
@@ -44,18 +45,18 @@ class Main:
 
     def __FOOD(self):
 
-        self.__options("food", [self.__GET_FOOD, self.__DELETE_FOOD, self.__ADD_FOOD])
+        self.__options("food", [self.__DELETE_FOOD, self.__ADD_FOOD, self.__GET_FOOD])
     def __GET_FOOD(self, name):
         print("mhm")
         if not self.foodFile.elem_exists(name):
             print("Food with this name does not exist")
         else:
             food = self.foodFile.get_elem(name)
-            info = food.get_values()
+            info = get_food(food)
 
             self.__print_nutrition(name, info)
     def __DELETE_FOOD(self, name):
-
+        print("fuck")
         if not self.foodFile.elem_exists(name):
             print("Food with this name does not exist")
         else:
@@ -67,7 +68,13 @@ class Main:
         else:
             nutritionName = input("Name of nutrition fact that makes up food: ")
 
-            self.foodFile.add_elem(FoodType(name, nutritionName))
+            #check that the nutrition fact actually exists
+            if not self.nuritionFile.elem_exists(name):
+                print("Nurition fact with this name does not exist")
+            else:
+                food = FoodType(name, [nutritionName, 100])
+
+                self.foodFile.add_elem(food)
 
     def __NUTRITION(self):
                 
@@ -79,7 +86,7 @@ class Main:
         else:
             fact = self.nuritionFile.get_elem(name)
 
-            self.__print_nutrition(name, fact)
+            self.__print_nutrition(name, fact.get_values())
     def __DELETE_NUTRITION(self, name):
         
         if not self.nuritionFile.elem_exists(name):
@@ -125,17 +132,18 @@ class Main:
 
     #name - name to be printed
     #fact - nutrition fact to be printed
-    def __print_nutrition(self, name, fact):
+    def __print_nutrition(self, name, values):
 
+        #change to values and indicies
         print("Name:", name)
-        print("Calories:", fact.get_calories())
-        print("Fat:", fact.get_fat())
-        print("     Saturated Fat:", fact.get_saturdated())
-        print("     Trans Fat:", fact.get_trans())
-        print("Cholesterol:", fact.get_chol())
-        print("Sodium:", fact.get_sodium())
-        print("Carbohydrates:", fact.get_carbs())
-        print("     Fiber", fact.get_fiber())
-        print("     Sugar", fact.get_sugar())
-        print("Protien", fact.get_protien())
+        print("Calories:", values[0])
+        print("Fat:", values[1])
+        print("     Saturated Fat:", values[1])
+        print("     Trans Fat:", values[2])
+        print("Cholesterol:", values[3])
+        print("Sodium:", values[4])
+        print("Carbohydrates:", values[6])
+        print("     Fiber", values[5])
+        print("     Sugar", values[6])
+        print("Protien", values[7])
 
