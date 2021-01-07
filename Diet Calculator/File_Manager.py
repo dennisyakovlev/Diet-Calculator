@@ -1,6 +1,7 @@
 import os
 from Element_Base import Element_Base as Base
 
+#methods return true on success and false on fail
 class File:
 
     nameExtension = "_names"
@@ -39,18 +40,17 @@ class File:
     def add_elem(self, element):
 
         #cast to a base element
-        baseElement = self.__cast_to_base(element)
+        #baseElement = self.__cast_to_base(element)
 
         #write to names file
         namesFile = open(self.namesFileName, "r+")
-        if not self.__check_name(baseElement.get_name(), namesFile):
-            print(baseElement.get_name(), "name is taken")
-            exit()
+        if not self.__check_name(element.get_name(), namesFile):
+            return False
 
         while namesFile.readline():
             pass
 
-        namesFile.write(str(baseElement.get_name()) + "\n")
+        namesFile.write(str(element.get_name()) + "\n")
         namesFile.close()
         #write to names file
 
@@ -59,12 +59,14 @@ class File:
         while valuesFile.readline():
             pass
         
-        valuesFile.write(str(baseElement.get_name()) + self.nameExtension + "\n")
-        for item in baseElement.get_values():
+        valuesFile.write(str(element.get_name()) + self.nameExtension + "\n")
+        for item in element.get_values():
             valuesFile.write(str(item) + "\n")
 
         valuesFile.close()
         #write to values file
+    
+        return True
 
     #get element as the set type using the given name
     def get_elem(self, name):
@@ -72,8 +74,7 @@ class File:
         #check to see if there exists an element with the specified name
         namesFile = open(self.namesFileName, "r")
         if self.__check_name(name, namesFile):
-            print(name, "not found")
-            exit()
+            raise Exception("GET_ELEM - cannot get element of name: " + name)
         namesFile.close()
 
         #open the values file
@@ -105,8 +106,7 @@ class File:
         
         namesFile = open(self.namesFileName, "r")
         if self.__check_name(name, namesFile):
-            print(name, "not found")
-            exit()
+            raise Exception("REMOVE_ELEM - cannot get element of name: " + name)
         namesFile.close()
 
         self.__remoe_elem_name(name)
@@ -168,7 +168,7 @@ class File:
         os.rename(self.tempFileName, self.fileName)
 
     #file is opened for reading
-    #checks if name is already exists, return True if not taken
+    #checks if name is already exists, return True if name doesnt exist
     def __check_name(self, name, file):
         
         lines = file.readlines()

@@ -47,7 +47,7 @@ class Main:
 
         self.__options("food", [self.__DELETE_FOOD, self.__ADD_FOOD, self.__GET_FOOD])
     def __GET_FOOD(self, name):
-        print("mhm")
+
         if not self.foodFile.elem_exists(name):
             print("Food with this name does not exist")
         else:
@@ -56,7 +56,7 @@ class Main:
 
             self.__print_nutrition(name, info)
     def __DELETE_FOOD(self, name):
-        print("fuck")
+
         if not self.foodFile.elem_exists(name):
             print("Food with this name does not exist")
         else:
@@ -69,11 +69,10 @@ class Main:
             nutritionName = input("Name of nutrition fact that makes up food: ")
 
             #check that the nutrition fact actually exists
-            if not self.nuritionFile.elem_exists(name):
+            if not self.nuritionFile.elem_exists(nutritionName):
                 print("Nurition fact with this name does not exist")
             else:
                 food = FoodType(name, [nutritionName, 100])
-
                 self.foodFile.add_elem(food)
 
     def __NUTRITION(self):
