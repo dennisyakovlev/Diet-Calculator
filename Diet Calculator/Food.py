@@ -12,6 +12,6 @@ def get_food_info(food):
 class Food(E_Base.Element_Base):
 
     #name - name of food
-    #values - [(nutrition fact name, weight), ...]
+    #values - [nutrition fact name, weight]
 
     pass

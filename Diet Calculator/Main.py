@@ -9,18 +9,37 @@ class Main:
 
     def __init__(self):
         
+       #set commands
        self.commands = ["EXIT", "NUTRITION", "FOOD"]
        self.dict = {self.commands[0]: self.__EXIT, self.commands[1]: self.__NUTRITION, self.commands[2]: self.__FOOD}
+       #set commands
 
+       #set printing params
+       self.values = ["Access food commands: ", "Access nutritional information commands: ", "Exit the program: "]
+
+       maxLen = 0
+       for item in self.values:
+           maxLen = max(maxLen, len(item))
+
+       self.spaces = []
+       for item in self.values:
+           self.spaces.append(" " * (maxLen - len(item)))
+       #set printing params
+
+       #create files
        self.nuritionFile = FileType(CONST.NUTRITION_FILE_NAME, NutritionType)
        self.foodFile = FileType(CONST.FOOD_FILE_NAME, FoodType)
+       #create files
 
+       #consle loop
        while True:
 
            self.__print_commands()
 
+           print()
+
            #get function call
-           inp = input()
+           inp = input("Enter Command: ")
 
            print()
 
@@ -35,9 +54,9 @@ class Main:
     def __print_commands(self):
         
         print("Commands:\n" + 
-              "Add a food: " + self.commands[2] + "\n" +
-              "Add a nutritional information: " + self.commands[1] + "\n" + 
-              "Exit the program: " + self.commands[0])
+              self.values[0] + self.spaces[0] + self.commands[2] + "\n" +
+              self.values[1] + self.spaces[1] + self.commands[1] + "\n" + 
+              self.values[2] + self.spaces[2] + self.commands[0])
 
     def __EXIT(self):
 
@@ -114,9 +133,11 @@ class Main:
     #functions - list of functions to be called with input as item name
     def __options(self, toPrint, functions):
 
-        inp = input("Remove " + toPrint + ": REMOVE\n" +
+        print("Remove " + toPrint + ": REMOVE\n" +
                     "Add  " + toPrint + ": ADD\n" +
                     "Get " + toPrint + ": GET\n")
+
+        inp = input("Enter action: ")
 
         print()
 
