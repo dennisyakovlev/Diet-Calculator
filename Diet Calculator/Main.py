@@ -15,15 +15,13 @@ class Main:
        #set commands
 
        #set printing params
-       self.values = ["Access food commands: ", "Access nutritional information commands: ", "Exit the program: "]
+       self.nutritionItems = ["Calories:", "Fat:", "     Saturated Fat:", "     Trans Fat:", "Cholesterol:", "Sodium:", \
+           "Carbohydrates:", "     Fiber", "     Sugar", "Protien"]
+       self.nutritionSpaces = self.__get_spaces(self.nutritionItems)
 
-       maxLen = 0
-       for item in self.values:
-           maxLen = max(maxLen, len(item))
 
-       self.spaces = []
-       for item in self.values:
-           self.spaces.append(" " * (maxLen - len(item)))
+       self.commandValues = ["Access food commands: ", "Access nutritional information commands: ", "Exit the program: "]
+       self.commandSpaces = self.__get_spaces(self.commandValues)
        #set printing params
 
        #create files
@@ -53,10 +51,20 @@ class Main:
 
     def __print_commands(self):
         
+        printItems = [self.commandValues[0] + self.commandSpaces[0] + self.commands[2], \
+                      self.commandValues[1] + self.commandSpaces[1] + self.commands[1], \
+                      self.commandValues[2] + self.commandSpaces[2] + self.commands[0]]
+
+        maxLen = 0
+        for item in printItems:
+            maxLen = max(maxLen, len(item))
+        
+        print("-" * maxLen)
+
         print("Commands:\n" + 
-              self.values[0] + self.spaces[0] + self.commands[2] + "\n" +
-              self.values[1] + self.spaces[1] + self.commands[1] + "\n" + 
-              self.values[2] + self.spaces[2] + self.commands[0])
+              printItems[0] + "\n" +
+              printItems[1] + "\n" + 
+              printItems[2])
 
     def __EXIT(self):
 
@@ -117,6 +125,7 @@ class Main:
             print("Nurition fact with this name already exists")
         else:
             #get info
+            print("\nEnter per 100g")
             values = []
             values.append(input("Enter number of calories: "))
             values.append(input("Enter grams of saturated fat: "))
@@ -128,6 +137,19 @@ class Main:
             values.append(input("Enter grams of protien: "))
 
             self.nuritionFile.add_elem(NutritionType(name, values))
+         
+    #get list of string of spaces compareed to the
+    #max length of a string in values
+    def __get_spaces(self, values):
+        
+       toRet = []
+       maxLen = 0
+       for item in values:
+           maxLen = max(maxLen, len(item))
+       for item in values:
+           toRet.append(" " * (maxLen - len(item)))
+
+       return toRet
 
     #toPrint - what should be printed 
     #functions - list of functions to be called with input as item name
@@ -154,16 +176,23 @@ class Main:
     #fact - nutrition fact to be printed
     def __print_nutrition(self, name, values):
 
-        #change to values and indicies
-        print("Name:", name)
-        print("Calories:", values[0])
-        print("Fat:", values[1])
-        print("     Saturated Fat:", values[1])
-        print("     Trans Fat:", values[2])
-        print("Cholesterol:", values[3])
-        print("Sodium:", values[4])
-        print("Carbohydrates:", values[6])
-        print("     Fiber", values[5])
-        print("     Sugar", values[6])
-        print("Protien", values[7])
+        print()
 
+        longestLine = "Nutritional information per 100g for \"" + name + "\":"
+
+        print("-" * len(longestLine))
+        
+        print(longestLine + "\n")
+        
+        print(self.nutritionItems[0] + self.nutritionSpaces[0], values[0], "cal")
+        print(self.nutritionItems[1] + self.nutritionSpaces[1], str(values[1] + values[2]), "g")
+        print(self.nutritionItems[2] + self.nutritionSpaces[2], str(values[1]), "g")
+        print(self.nutritionItems[3] + self.nutritionSpaces[3], str(values[2]), "g")
+        print(self.nutritionItems[4] + self.nutritionSpaces[4], str(values[3]), "mg")
+        print(self.nutritionItems[5] + self.nutritionSpaces[5], str(values[4]), "mg")
+        print(self.nutritionItems[6] + self.nutritionSpaces[6], str(values[5] + values[6]), "g")
+        print(self.nutritionItems[7] + self.nutritionSpaces[7], str(values[5]), "g")
+        print(self.nutritionItems[8] + self.nutritionSpaces[8], str(values[6]), "g")
+        print(self.nutritionItems[9] + self.nutritionSpaces[9], str(values[7]), "g")
+        
+        print("-" * len(longestLine))
