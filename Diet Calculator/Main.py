@@ -9,8 +9,11 @@ class Main:
     def __init__(self):
         
        #set commands
-       self.commands = ["EXIT", "NUTRITION", "FOOD"]
-       self.dict = {self.commands[0]: self.__EXIT, self.commands[1]: self.__NUTRITION, self.commands[2]: self.__FOOD}
+       self.commands = ["EXIT", "NUTRITION", "FOOD", "DISH"]
+       self.dict = {self.commands[0]: self.__EXIT, \
+                    self.commands[1]: self.__NUTRITION, \
+                    self.commands[2]: self.__FOOD, \
+                    self.commands[3]: self.__DISH}
        #set commands
 
        #set printing params
@@ -19,7 +22,10 @@ class Main:
        self.nutritionSpaces = self.__get_spaces(self.nutritionItems)
 
 
-       self.commandValues = ["Access food commands: ", "Access nutritional information commands: ", "Exit the program: "]
+       self.commandValues = ["Access food commands: ", \
+                             "Access nutritional information commands: ", 
+                             "Exit the program: ", \
+                             "Access dish commands"]
        self.commandSpaces = self.__get_spaces(self.commandValues)
        #set printing params
 
@@ -50,9 +56,10 @@ class Main:
 
     def __print_commands(self):
         
-        printItems = [self.commandValues[0] + self.commandSpaces[0] + self.commands[2], \
-                      self.commandValues[1] + self.commandSpaces[1] + self.commands[1], \
-                      self.commandValues[2] + self.commandSpaces[2] + self.commands[0]]
+        printItems = [self.commandValues[0] + self.commandSpaces[0] + self.commands[3], \
+                      self.commandValues[1] + self.commandSpaces[1] + self.commands[2], \
+                      self.commandValues[2] + self.commandSpaces[2] + self.commands[1], \
+                      self.commandValues[3] + self.commandSpaces[3] + self.commands[0]]
 
         maxLen = 0
         for item in printItems:
@@ -60,14 +67,23 @@ class Main:
         
         print("-" * maxLen)
 
-        print("Commands:\n" + 
-              printItems[0] + "\n" +
-              printItems[1] + "\n" + 
-              printItems[2])
+        print("Commands:\n")
+        for item in printItems:
+            print(item)
+        
 
     def __EXIT(self):
 
         sys.exit()
+
+    def __DISH(self):
+        self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH])
+    def __GET_DISH(self, name):
+        pass
+    def __DELETE_DISH(self, name):
+        pass
+    def __ADD_DISH(self, name):
+        pass
 
     def __FOOD(self):
 
