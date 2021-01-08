@@ -2,7 +2,6 @@ import CONSTANTS as CONST
 from File_Manager import File as FileType
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 from Food import Food as FoodType
-from Food import get_food_info as get_food
 import sys
 
 class Main:
@@ -85,7 +84,7 @@ class Main:
                 print("Food with this name does not exist")
             else:
                 food = self.foodFile.get_elem(name)
-                info = get_food(food)
+                info = food.get_nutritional_info()
 
                 self.__print_nutrition(name, info)
     def __DELETE_FOOD(self, name):

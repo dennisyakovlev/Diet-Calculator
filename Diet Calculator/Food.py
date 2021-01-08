@@ -3,15 +3,21 @@ from Nutrition_Fact import Nutrition_Fact as Fact
 import CONSTANTS as CONST
 from File_Manager import File as FileType
 
-#food - type of food
-def get_food_info(food):
-    file = FileType(CONST.NUTRITION_FILE_NAME, Fact)
-    elem = file.get_elem(food.get_values()[0])
-    return elem.get_values()
-
 class Food(E_Base.Element_Base):
 
     #name - name of food
     #values - [nutrition fact name, weight]
 
-    pass
+    #returns list of values containing nutritional info
+    def __add__(self, other):
+        
+        return self.get_nutritional_info() + other.get_nutritional_info()
+
+    def __sub__(self, other):
+
+        return self.get_nutritional_info() - other.get_nutritional_info()
+
+    def get_nutritional_info(self):
+        file = FileType(CONST.NUTRITION_FILE_NAME, Fact)
+        elem = file.get_elem(self.get_values()[0])
+        return elem.get_values()
