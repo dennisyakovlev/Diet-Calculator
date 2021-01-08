@@ -29,6 +29,17 @@ class File:
             fileNames = open(self.namesFileName, "w+")
             fileNames.close()
 
+    #get all the names of the elements in the file
+    def get_all(self):
+        
+        toReturn = []
+        namesFile = open(self.namesFileName)
+        line = namesFile.readline()
+        while line != "":
+            toReturn.append(line.strip())
+            line = namesFile.readline()
+        return toReturn
+
     #to check if a name exists
     #return true if the name already exists
     def elem_exists(self, name):

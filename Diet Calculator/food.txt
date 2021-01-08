@@ -1,6 +1,6 @@
 TEST_names
 pork
 100
-mcFuckYou_names
-pork
+steak_names
+test
 100

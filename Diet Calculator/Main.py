@@ -75,13 +75,19 @@ class Main:
         self.__options("food", [self.__DELETE_FOOD, self.__ADD_FOOD, self.__GET_FOOD])
     def __GET_FOOD(self, name):
 
-        if not self.foodFile.elem_exists(name):
-            print("Food with this name does not exist")
+        if name == "ALL":
+            allNames = self.foodFile.get_all()
+            print()
+            for item in allNames:
+                print(item)
         else:
-            food = self.foodFile.get_elem(name)
-            info = get_food(food)
+            if not self.foodFile.elem_exists(name):
+                print("Food with this name does not exist")
+            else:
+                food = self.foodFile.get_elem(name)
+                info = get_food(food)
 
-            self.__print_nutrition(name, info)
+                self.__print_nutrition(name, info)
     def __DELETE_FOOD(self, name):
 
         if not self.foodFile.elem_exists(name):
@@ -106,13 +112,19 @@ class Main:
                 
         self.__options("nutrition fact", [self.__DELETE_NUTRITION, self.__ADD_NUTRITION, self.__GET_NUTRITION])   
     def __GET_NUTRITION(self, name):
-
-        if not self.nuritionFile.elem_exists(name):
-            print("Nurition fact with this name does not exist")
+        
+        if name == "ALL":
+            allNames = self.nuritionFile.get_all()
+            print()
+            for item in allNames:
+                print(item)
         else:
-            fact = self.nuritionFile.get_elem(name)
+            if not self.nuritionFile.elem_exists(name):
+                print("Nurition fact with this name does not exist")
+            else:
+                fact = self.nuritionFile.get_elem(name)
 
-            self.__print_nutrition(name, fact.get_values())
+                self.__print_nutrition(name, fact.get_values())
     def __DELETE_NUTRITION(self, name):
         
         if not self.nuritionFile.elem_exists(name):
