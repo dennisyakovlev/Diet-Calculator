@@ -9,11 +9,11 @@ class Main:
     def __init__(self):
         
        #set commands
-       self.commands = ["EXIT", "NUTRITION", "FOOD", "DISH"]
-       self.dict = {self.commands[0]: self.__EXIT, \
-                    self.commands[1]: self.__NUTRITION, \
-                    self.commands[2]: self.__FOOD, \
-                    self.commands[3]: self.__DISH}
+       self.commands = ["DISH", "FOOD", "NUTRITION", "EXIT"]
+       self.dict = {self.commands[0]: self.__DISH, \
+                    self.commands[1]: self.__FOOD, \
+                    self.commands[2]: self.__NUTRITION, \
+                    self.commands[3]: self.__EXIT}
        #set commands
 
        #set printing params
@@ -28,6 +28,12 @@ class Main:
                              "Access dish commands"]
        self.commandSpaces = self.__get_spaces(self.commandValues)
        #set printing params
+
+       #create printing list
+       self.printItems = []
+       for i in range(0, len(self.commands)):
+           self.printItems.append(self.commandValues[i] + self.commandSpaces[i] + self.commands[i])
+       #create printing list
 
        #create files
        self.nuritionFile = FileType(CONST.NUTRITION_FILE_NAME, NutritionType)
@@ -55,34 +61,32 @@ class Main:
            print()
 
     def __print_commands(self):
-        
-        printItems = [self.commandValues[0] + self.commandSpaces[0] + self.commands[3], \
-                      self.commandValues[1] + self.commandSpaces[1] + self.commands[2], \
-                      self.commandValues[2] + self.commandSpaces[2] + self.commands[1], \
-                      self.commandValues[3] + self.commandSpaces[3] + self.commands[0]]
 
         maxLen = 0
-        for item in printItems:
+        for item in self.printItems:
             maxLen = max(maxLen, len(item))
         
         print("-" * maxLen)
 
         print("Commands:\n")
-        for item in printItems:
+        for item in self.printItems:
             print(item)
-        
 
     def __EXIT(self):
 
         sys.exit()
 
     def __DISH(self):
+
         self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH])
     def __GET_DISH(self, name):
+
         pass
     def __DELETE_DISH(self, name):
+
         pass
     def __ADD_DISH(self, name):
+
         pass
 
     def __FOOD(self):
