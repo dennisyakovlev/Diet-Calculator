@@ -19,8 +19,16 @@ class Main:
        #set commands
 
        #set printing params
-       self.nutritionItems = ["Calories:", "Fat:", "     Saturated Fat:", "     Trans Fat:", "Cholesterol:", "Sodium:", \
-           "Carbohydrates:", "     Fiber", "     Sugar", "Protien"]
+       self.nutritionItems = ["Calories:", \
+                              "Fat:", 
+                              "     Saturated Fat:", \
+                              "     Trans Fat:", \
+                              "Cholesterol:", \
+                              "Sodium:", \
+                              "Carbohydrates:", \
+                              "     Fiber", \
+                              "     Sugar", \
+                              "Protien"]
        self.nutritionSpaces = self.__get_spaces(self.nutritionItems)
 
 
@@ -106,8 +114,8 @@ class Main:
             print("Dish with this name already exists")
         else:
             
-            print("Enter food name(s) and weight(s).")
-
+            print("\nEnter food name(s) and weight(s).")
+            print()
             values = []
 
             foodName = " "
@@ -127,8 +135,7 @@ class Main:
                     values.append(foodName)
                     values.append(foodWeight)
 
-            self.dishesFile.add_elem(DishType(name, values))
-                
+            self.dishesFile.add_elem(DishType(name, values))     
 
     def __FOOD(self):
 
@@ -156,7 +163,7 @@ class Main:
         if self.foodFile.elem_exists(name):
             print("Food with this name already exists")
         else:
-            nutritionName = input("Name of nutrition fact that makes up food: ")
+            nutritionName = input("\nName of nutrition fact that makes up food: ")
 
             #check that the nutrition fact actually exists
             if not self.nuritionFile.elem_exists(nutritionName):
@@ -235,16 +242,19 @@ class Main:
 
         inp = input("Enter action: ")
 
-        print()
+        if inp != "REMOVE" and inp != "ADD" and inp != "GET":
+            print("\nEnter valid action")
+        else:
+            print()
 
-        name = input("Enter " + toPrint + " name: ")
+            name = input("Enter " + toPrint + " name: ")
 
-        if inp == "REMOVE":
-            functions[0](name)
-        elif inp == "ADD":
-            functions[1](name)
-        elif inp == "GET":
-            functions[2](name)
+            if inp == "REMOVE":
+                functions[0](name)
+            elif inp == "ADD":
+                functions[1](name)
+            elif inp == "GET":
+                functions[2](name)
 
     #name - name to be printed
     #fact - list of values from nutrition fact to be printed
