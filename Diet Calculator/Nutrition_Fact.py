@@ -79,3 +79,7 @@ class Nutrition_Fact(E_Base.Element_Base):
     def get_carbs(self):
 
         return self.get_fiber() + self.get_sugar()
+
+class Temp(E_Base.Element_Base):
+
+    pass
