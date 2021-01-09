@@ -17,6 +17,7 @@ class Food(E_Base.Element_Base):
 
         return self.get_nutritional_info() - other.get_nutritional_info()
 
+    #return list of values from nutrition info
     def get_nutritional_info(self):
         file = FileType(CONST.NUTRITION_FILE_NAME, Fact)
         elem = file.get_elem(self.get_values()[0])

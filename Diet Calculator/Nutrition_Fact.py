@@ -29,6 +29,17 @@ class Nutrition_Fact(E_Base.Element_Base):
             toRet.append(val)
         return toRet
 
+    #nurition_Fact * number
+    #multiplies all the 8 values by number
+    #return list of values containing 8 info facts
+    def __mul__(self, number):
+
+        #values = [print(item) for item in self.values]
+
+        values = [int(float(item) * float(number)) for item in self.values]
+
+        return values
+
     def get_calories(self):
 
         return self.values[0]

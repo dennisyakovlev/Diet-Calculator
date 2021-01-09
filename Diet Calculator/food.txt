@@ -1,9 +1,3 @@
-TEST_names
-pork
-100
-steak_names
-test
-100
-mhm_names
-test
+carrot_names
+carrot
 100

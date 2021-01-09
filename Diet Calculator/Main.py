@@ -2,6 +2,8 @@ import CONSTANTS as CONST
 from File_Manager import File as FileType
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 from Food import Food as FoodType
+from Dish import Dish as DishType
+
 import sys
 
 class Main:
@@ -38,6 +40,7 @@ class Main:
        #create files
        self.nuritionFile = FileType(CONST.NUTRITION_FILE_NAME, NutritionType)
        self.foodFile = FileType(CONST.FOOD_FILE_NAME, FoodType)
+       self.dishesFile = FileType(CONST.DISH_FILE_NAME, DishType)
        #create files
 
        #consle loop
@@ -81,13 +84,51 @@ class Main:
         self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH])
     def __GET_DISH(self, name):
 
-        pass
+        if name == "ALL":
+            self.__ALL(self.dishesFile)
+        else:
+            if not self.dishesFile.elem_exists(name):
+                print("Dish with this name does not exist")
+            else:
+                dish = self.dishesFile.get_elem(name)
+
+                nutritionalInfo = dish.get_nutritional_info()
+                self.__print_nutrition(name, nutritionalInfo, "Nutritional information for one ")      
     def __DELETE_DISH(self, name):
 
-        pass
+        if not self.dishesFile.elem_exists(name):
+            print("Dish with this name does not exist")
+        else:
+            self.dishesFile.remove_elem(name)
     def __ADD_DISH(self, name):
+                
+        if self.dishesFile.elem_exists(name):
+            print("Dish with this name already exists")
+        else:
+            
+            print("Enter food name(s) and weight(s).")
 
-        pass
+            values = []
+
+            foodName = " "
+            #get values to create dish
+            while True:
+
+                foodName = input("Name of food: ")
+
+                if foodName == "":
+                    break
+
+                if not self.foodFile.elem_exists(foodName):
+                    print("Food with this name does not exist")
+                else:
+                    foodWeight = input("Weight of food to be added to dish: ")
+
+                    values.append(foodName)
+                    values.append(foodWeight)
+
+            self.dishesFile.add_elem(DishType(name, values))
+                
 
     def __FOOD(self):
 
@@ -95,27 +136,24 @@ class Main:
     def __GET_FOOD(self, name):
 
         if name == "ALL":
-            allNames = self.foodFile.get_all()
-            print()
-            for item in allNames:
-                print(item)
+            self.__ALL(self.foodFile)
         else:
             if not self.foodFile.elem_exists(name):
                 print("Food with this name does not exist")
             else:
                 food = self.foodFile.get_elem(name)
-                info = food.get_nutritional_info()
+                nutritionalInfo = food.get_nutritional_info()
 
-                self.__print_nutrition(name, info)
+                self.__print_nutrition(name, nutritionalInfo)
     def __DELETE_FOOD(self, name):
 
         if not self.foodFile.elem_exists(name):
             print("Food with this name does not exist")
         else:
-            food = self.foodFile.remove_elem(name)
+            self.foodFile.remove_elem(name)
     def __ADD_FOOD(self, name):
 
-        if self.nuritionFile.elem_exists(name):
+        if self.foodFile.elem_exists(name):
             print("Food with this name already exists")
         else:
             nutritionName = input("Name of nutrition fact that makes up food: ")
@@ -133,10 +171,7 @@ class Main:
     def __GET_NUTRITION(self, name):
         
         if name == "ALL":
-            allNames = self.nuritionFile.get_all()
-            print()
-            for item in allNames:
-                print(item)
+            self.__ALL(self.nuritionFile)
         else:
             if not self.nuritionFile.elem_exists(name):
                 print("Nurition fact with this name does not exist")
@@ -169,6 +204,14 @@ class Main:
 
             self.nuritionFile.add_elem(NutritionType(name, values))
          
+    #print all the items from a file
+    def __ALL(self, file):
+        
+        allNames = file.get_all()
+        print()
+        for item in allNames:
+            print(item)
+
     #get list of string of spaces compareed to the
     #max length of a string in values
     def __get_spaces(self, values):
@@ -204,12 +247,12 @@ class Main:
             functions[2](name)
 
     #name - name to be printed
-    #fact - nutrition fact to be printed
-    def __print_nutrition(self, name, values):
+    #fact - list of values from nutrition fact to be printed
+    def __print_nutrition(self, name, values, text = "Nutritional information per 100g for "):
 
         print()
 
-        longestLine = "Nutritional information per 100g for \"" + name + "\":"
+        longestLine = text + "\"" + name + "\":"
 
         print("-" * len(longestLine))
         
