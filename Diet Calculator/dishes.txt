@@ -1,3 +1,7 @@
-carrot smoothie_names
-carrot
-250
+dinner_names
+steak
+100
+steak
+200
+steak
+300
