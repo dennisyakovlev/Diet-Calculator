@@ -14,7 +14,7 @@ class Dish(E_Base.Element_Base):
     def get_nutritional_info(self):
 
         file = FileType(CONST.FOOD_FILE_NAME, FoodType)
-        fact = [0,0,0,0,0,0,0,0]
+        fact = [ 0 * item for item in range( len( file.get_elem(self.values[0]).get_nutritional_info() ) ) ]
 
         for i in range(0 , len(self.values), 2):
             
