@@ -106,7 +106,7 @@ class Main:
         if name == "ALL":
             self.__print_all(self.daysFile)
         else:
-            pass
+            print("test")
     def __DELETE_DAY(self, name):
 
         if name == "ALL":
