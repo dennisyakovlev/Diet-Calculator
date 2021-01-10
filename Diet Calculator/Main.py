@@ -104,12 +104,18 @@ class Main:
     def __GET_DAY(self, name):
 
         if name == "ALL":
-            pass
+            self.__print_all(self.daysFile)
         else:
             pass
     def __DELETE_DAY(self, name):
 
-        pass
+        if name == "ALL":
+            self.__remove_all(self.daysFile)
+        else:
+            if not self.daysFile.elem_exists(name):
+                print("Day with this name does not exist")
+            else:
+                self.daysFile.remove_elem(name)
     def __ADD_DAY(self, name):
 
         if self.daysFile.elem_exists(name):
