@@ -109,10 +109,18 @@ class Main:
             if not self.daysFile.elem_exists(name):
                 print("Day with this name does not exist")
             else:
-                day = self.daysFile.get_elem(name)
+               
+                inp = input("\nGet nutritional information total(T) or for each dish(E): ")
 
-                nutritionalInfo = day.get_nutritional_info()
-                self.__print_nutrition(name, nutritionalInfo, "Nutritional information for the day ")
+                if inp == "T":
+                    day = self.daysFile.get_elem(name)
+
+                    nutritionalInfo = day.get_nutritional_info()
+                    self.__print_nutrition(name, nutritionalInfo, "Nutritional information for the day ")
+                elif inp ==  "E":
+                    pass
+                else:
+                    print("Input should be \"T\" or \"E\"")
     def __DELETE_DAY(self, name):
 
         if name == "ALL":
@@ -382,3 +390,10 @@ class Main:
     
         return toRet
 
+    #get the longest element in a list
+    def __get_longest(self, values):
+
+        longest = 0
+        for i in range(len(values)):
+            longest = max(longest, len(values[i]))
+        return longest
