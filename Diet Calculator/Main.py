@@ -106,7 +106,13 @@ class Main:
         if name == "ALL":
             self.__print_all(self.daysFile)
         else:
-            print("test")
+            if not self.daysFile.elem_exists(name):
+                print("Day with this name does not exist")
+            else:
+                day = self.daysFile.get_elem(name)
+
+                nutritionalInfo = day.get_nutritional_info()
+                self.__print_nutrition(name, nutritionalInfo, "Nutritional information for the day ")
     def __DELETE_DAY(self, name):
 
         if name == "ALL":
@@ -344,15 +350,35 @@ class Main:
         
         print(longestLine + "\n")
         
-        print(self.nutritionItems[0] + self.nutritionSpaces[0], values[0], "cal")
-        print(self.nutritionItems[1] + self.nutritionSpaces[1], str(values[1]), "g")
-        print(self.nutritionItems[2] + self.nutritionSpaces[2], str(values[2]), "g")
-        print(self.nutritionItems[3] + self.nutritionSpaces[3], str(values[3]), "g")
-        print(self.nutritionItems[4] + self.nutritionSpaces[4], str(values[4]), "mg")
-        print(self.nutritionItems[5] + self.nutritionSpaces[5], str(values[5]), "mg")
-        print(self.nutritionItems[6] + self.nutritionSpaces[6], str(values[6]), "g")
-        print(self.nutritionItems[7] + self.nutritionSpaces[7], str(values[7]), "g")
-        print(self.nutritionItems[8] + self.nutritionSpaces[8], str(values[8]), "g")
-        print(self.nutritionItems[9] + self.nutritionSpaces[9], str(values[9]), "g")
-        
+        printValues = self.__get_print_nutrition_info(values)
+
+        print(printValues[0])
+        print(printValues[1])
+        print(printValues[2])
+        print(printValues[3])
+        print(printValues[4])
+        print(printValues[5])
+        print(printValues[6])
+        print(printValues[7])
+        print(printValues[8])
+        print(printValues[9])
+
         print("-" * len(longestLine))
+
+    #returns list of values where each line is the output for a nutrition fact
+    #list of length 10
+    def __get_print_nutrition_info(self, values):
+
+        toRet = [self.nutritionItems[0] + self.nutritionSpaces[0] + " " + str(values[0]) + " cal",
+                 self.nutritionItems[1] + self.nutritionSpaces[1] + " " + str(values[1]) + " g",
+                 self.nutritionItems[2] + self.nutritionSpaces[2] + " " + str(values[2]) + " g", 
+                 self.nutritionItems[3] + self.nutritionSpaces[3] + " " + str(values[3]) + " g",
+                 self.nutritionItems[4] + self.nutritionSpaces[4] + " " + str(values[4]) + " mg",
+                 self.nutritionItems[5] + self.nutritionSpaces[5] + " " + str(values[5]) + " mg",
+                 self.nutritionItems[6] + self.nutritionSpaces[6] + " " + str(values[6]) + " g",
+                 self.nutritionItems[7] + self.nutritionSpaces[7] + " " + str(values[7]) + " g",
+                 self.nutritionItems[8] + self.nutritionSpaces[8] + " " + str(values[8]) + " g",
+                 self.nutritionItems[9] + self.nutritionSpaces[9] + " " + str(values[9]) + " g"]
+    
+        return toRet
+

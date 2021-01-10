@@ -10,7 +10,12 @@ class Dish(E_Base.Element_Base):
     #not actual tuples
     #values - [(food name, weight), (food name, weight), ...]
 
-    #FINISH
+    #retuns list of values containing nutritional info
+    def __add__(self, other):
+
+        return self.get_nutritional_info() + other.get_nutritional_info()
+
+    #returns list of values corresponding to nutritional information
     def get_nutritional_info(self):
 
         file = FileType(CONST.FOOD_FILE_NAME, FoodType)
