@@ -13,14 +13,8 @@ class Element_Base:
         self.name = name
 
         self.values = []
-        self.types = []
         for item in values:
-            self.types.append(type(item))
             self.values.append(item)
-
-    def get_types(self):
-
-        return self.types
 
     def get_values(self):
 

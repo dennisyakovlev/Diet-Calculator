@@ -211,7 +211,12 @@ class Main:
             values.append(input("Enter grams of sugar: "))
             values.append(input("Enter grams of protien: "))
 
-            self.nuritionFile.add_elem(NutritionType(name, values))
+            nutrition = NutritionType(name, values)
+
+            if nutrition.is_valid():
+                self.nuritionFile.add_elem(NutritionType(name, values))
+            else:
+                print("\nEnter valid values")
          
     #print all the items from a file
     def __ALL(self, file):

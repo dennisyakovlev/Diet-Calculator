@@ -5,6 +5,15 @@ class Nutrition_Fact(E_Base.Element_Base):
     #name - name of nutrition fact
     #values - length of 10 numbers for the nutritional info
 
+    #checks if the nutrition fact has valid values
+    #returns true if all values are valid
+    def is_valid(self):
+
+        for item in self.values:
+            if not item.isnumeric():
+                return False
+        return True
+
     #adds two nutrition facts
     #returns list of values containing 8 info facts
     def __add__(self, other):

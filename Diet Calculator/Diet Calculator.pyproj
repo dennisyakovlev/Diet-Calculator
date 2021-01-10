@@ -24,6 +24,9 @@
     <Compile Include="CONSTANTS.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Day.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Diet_Calculator.py" />
     <Compile Include="Dish.py">
       <SubType>Code</SubType>

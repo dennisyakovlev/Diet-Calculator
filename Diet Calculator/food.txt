@@ -1,3 +1,6 @@
 steak_names
 test
 100
+t_names
+0
+100
