@@ -10,7 +10,7 @@ class Nutrition_Fact(E_Base.Element_Base):
     def is_valid(self):
 
         for item in self.values:
-            if not item.isnumeric():
+            if not item.replace('.', "", 1).isnumeric():
                 return False
         return True
 

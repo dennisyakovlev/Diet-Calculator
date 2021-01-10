@@ -37,9 +37,6 @@
     <Compile Include="File_Manager.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="File_Utilities.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Food.py">
       <SubType>Code</SubType>
     </Compile>

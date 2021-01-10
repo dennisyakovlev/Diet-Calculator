@@ -3,6 +3,7 @@ from File_Manager import File as FileType
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 from Food import Food as FoodType
 from Dish import Dish as DishType
+from Day import Day as DayType
 
 import sys
 
@@ -11,11 +12,12 @@ class Main:
     def __init__(self):
         
        #set commands
-       self.commands = ["DISH", "FOOD", "NUTRITION", "EXIT"]
-       self.dict = {self.commands[0]: self.__DISH, \
-                    self.commands[1]: self.__FOOD, \
-                    self.commands[2]: self.__NUTRITION, \
-                    self.commands[3]: self.__EXIT}
+       self.commands = ["DAY", "DISH", "FOOD", "NUTRITION", "EXIT"]
+       self.dict = {self.commands[0]: self.__DAY, \
+                    self.commands[1]: self.__DISH, \
+                    self.commands[2]: self.__FOOD, \
+                    self.commands[3]: self.__NUTRITION, \
+                    self.commands[4]: self.__EXIT}
        #set commands
 
        #set printing params
@@ -32,8 +34,9 @@ class Main:
        self.nutritionSpaces = self.__get_spaces(self.nutritionItems)
 
 
-       self.commandValues = ["Access food commands: ", \
-                             "Access nutritional information commands: ", 
+       self.commandValues = ["Access day commands: ", \
+                             "Access food commands: ", \
+                             "Access nutritional information commands: ", \
                              "Exit the program: ", \
                              "Access dish commands"]
        self.commandSpaces = self.__get_spaces(self.commandValues)
@@ -49,12 +52,13 @@ class Main:
        self.nuritionFile = FileType(CONST.NUTRITION_FILE_NAME, NutritionType)
        self.foodFile = FileType(CONST.FOOD_FILE_NAME, FoodType)
        self.dishesFile = FileType(CONST.DISH_FILE_NAME, DishType)
+       self.daysFile = FileType(CONST.DAY_FILE_NAME, DayType)
        #create files
 
        #first print
        print("Special words\n")
        print("ALL - Gets the names of all the requested items.\n" + \
-             "    - Works with GET action.")
+             "    - Works with GET and REMOVE actions.")
        print()
        #first print
 
@@ -94,6 +98,42 @@ class Main:
 
         sys.exit()
 
+    def __DAY(self):
+        
+        self.__options("day", [self.__DELETE_DAY, self.__ADD_DAY, self.__GET_DAY])
+    def __GET_DAY(self, name):
+
+        if name == "ALL":
+            pass
+        else:
+            pass
+    def __DELETE_DAY(self, name):
+
+        pass
+    def __ADD_DAY(self, name):
+
+        if self.daysFile.elem_exists(name):
+            print("Day with this name already exists")
+        else:
+            print("\nEnter dishes which make up day")
+            print()
+            
+            values = []
+            dishName = " "
+            while True:
+
+                dishName = input("Name of dish: ")
+
+                if dishName == "":
+                    break
+
+                if not self.dishesFile.elem_exists(dishName):
+                    print("Dish with this name does not exist")
+                else:
+                    values.append(dishName)
+
+            self.daysFile.add_elem(DayType(name, values))
+
     def __DISH(self):
 
         self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH])
@@ -126,8 +166,8 @@ class Main:
             
             print("\nEnter food name(s) and weight(s).")
             print()
-            values = []
 
+            values = []
             foodName = " "
             #get values to create dish
             while True:
@@ -230,7 +270,7 @@ class Main:
             nutrition = NutritionType(name, values)
 
             if nutrition.is_valid():
-                self.nuritionFile.add_elem(NutritionType(name, values))
+                self.nuritionFile.add_elem(nutrition)
             else:
                 print("\nEnter valid values")
          
@@ -307,6 +347,6 @@ class Main:
         print(self.nutritionItems[6] + self.nutritionSpaces[6], str(values[6]), "g")
         print(self.nutritionItems[7] + self.nutritionSpaces[7], str(values[7]), "g")
         print(self.nutritionItems[8] + self.nutritionSpaces[8], str(values[8]), "g")
-        print(self.nutritionItems[9] + self.nutritionSpaces[9], str(values[8]), "g")
+        print(self.nutritionItems[9] + self.nutritionSpaces[9], str(values[9]), "g")
         
         print("-" * len(longestLine))
