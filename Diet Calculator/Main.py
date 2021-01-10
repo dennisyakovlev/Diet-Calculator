@@ -51,6 +51,13 @@ class Main:
        self.dishesFile = FileType(CONST.DISH_FILE_NAME, DishType)
        #create files
 
+       #first print
+       print("Special words\n")
+       print("ALL - Gets the names of all the requested items.\n" + \
+             "    - Works with GET action.")
+       print()
+       #first print
+
        #consle loop
        while True:
 
@@ -93,7 +100,7 @@ class Main:
     def __GET_DISH(self, name):
 
         if name == "ALL":
-            self.__ALL(self.dishesFile)
+            self.__print_all(self.dishesFile)
         else:
             if not self.dishesFile.elem_exists(name):
                 print("Dish with this name does not exist")
@@ -104,10 +111,13 @@ class Main:
                 self.__print_nutrition(name, nutritionalInfo, "Nutritional information for one ")      
     def __DELETE_DISH(self, name):
 
-        if not self.dishesFile.elem_exists(name):
-            print("Dish with this name does not exist")
+        if name == "ALL":
+            self.__remove_all(self.dishesFile)
         else:
-            self.dishesFile.remove_elem(name)
+            if not self.dishesFile.elem_exists(name):
+                print("Dish with this name does not exist")
+            else:
+                self.dishesFile.remove_elem(name)
     def __ADD_DISH(self, name):
                 
         if self.dishesFile.elem_exists(name):
@@ -143,7 +153,7 @@ class Main:
     def __GET_FOOD(self, name):
 
         if name == "ALL":
-            self.__ALL(self.foodFile)
+            self.__print_all(self.foodFile)
         else:
             if not self.foodFile.elem_exists(name):
                 print("Food with this name does not exist")
@@ -154,10 +164,13 @@ class Main:
                 self.__print_nutrition(name, nutritionalInfo)
     def __DELETE_FOOD(self, name):
 
-        if not self.foodFile.elem_exists(name):
-            print("Food with this name does not exist")
+        if name == "ALL":
+            self.__remove_all(self.foodFile)
         else:
-            self.foodFile.remove_elem(name)
+            if not self.foodFile.elem_exists(name):
+                print("Food with this name does not exist")
+            else:
+                self.foodFile.remove_elem(name)
     def __ADD_FOOD(self, name):
 
         if self.foodFile.elem_exists(name):
@@ -178,7 +191,7 @@ class Main:
     def __GET_NUTRITION(self, name):
         
         if name == "ALL":
-            self.__ALL(self.nuritionFile)
+            self.__print_all(self.nuritionFile)
         else:
             if not self.nuritionFile.elem_exists(name):
                 print("Nurition fact with this name does not exist")
@@ -188,10 +201,13 @@ class Main:
                 self.__print_nutrition(name, fact.get_values())
     def __DELETE_NUTRITION(self, name):
         
-        if not self.nuritionFile.elem_exists(name):
-            print("Nurition fact with this name does not exist")
+        if name == "ALL":
+            self.__remove_all(self.nuritionFile)
         else:
-            self.nuritionFile.remove_elem(name)
+            if not self.nuritionFile.elem_exists(name):
+                print("Nurition fact with this name does not exist")
+            else:
+                self.nuritionFile.remove_elem(name)
     def __ADD_NUTRITION(self, name):
 
         if self.nuritionFile.elem_exists(name):
@@ -219,12 +235,19 @@ class Main:
                 print("\nEnter valid values")
          
     #print all the items from a file
-    def __ALL(self, file):
-        
+    def __print_all(self, file):
+
         allNames = file.get_all()
         print()
         for item in allNames:
             print(item)
+
+    #delete all the intems from a file
+    def __remove_all(self, file):
+
+        allNames = file.get_all()[::-1]
+        for name in allNames:
+            file.remove_elem(name)
 
     #get list of string of spaces compareed to the
     #max length of a string in values
