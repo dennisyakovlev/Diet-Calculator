@@ -146,7 +146,11 @@ class Main:
                     for i in range(len(printValuesTemp[0])):
                         #index each element in printValuesTemp
                         for j in range(len(printValuesTemp)):
-                            printValues[i] = printValues[i] + printValuesTemp[j][i]
+                            #if it is the first nutrition fact to be printed, add a | on the left
+                            if j == 0:
+                                printValues[i] = "| " + printValues[i] + printValuesTemp[j][i]
+                            else:
+                                printValues[i] = printValues[i] + printValuesTemp[j][i]
 
                     #print result
                     print("\n" + ("-" * (len(printValues[0]) - 1)))
