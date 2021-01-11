@@ -149,8 +149,10 @@ class Main:
                             printValues[i] = printValues[i] + printValuesTemp[j][i]
 
                     #print result
+                    print("\n" + ("-" * (len(printValues[0]) - 1)))
                     for line in printValues:
-                        print(line)
+                        print(line[:-1])
+                    print("-" * (len(printValues[0]) - 1))
 
                 else:
                     print("Input should be \"T\" or \"E\"")
@@ -429,4 +431,12 @@ class Main:
         longest = 0
         for i in range(len(values)):
             longest = i if len(values[i]) > len(values[longest]) else longest
+        return longest
+
+    #return size of longest element in list
+    def _get_longest_val(self, values):
+
+        longest = len(values[0])
+        for item in values[1:]:
+            longest = len(item) if len(item) > len(values[longest]) else longest
         return longest
