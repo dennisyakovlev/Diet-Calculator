@@ -118,7 +118,40 @@ class Main:
                     nutritionalInfo = day.get_nutritional_info()
                     self.__print_nutrition(name, nutritionalInfo, "Nutritional information for the day ")
                 elif inp ==  "E":
-                    pass
+                    dishes = self.daysFile.get_elem(name).get_values()
+
+                    #list of list of values
+                    #[[calories, ..., protien], [calories, ..., protien], ...]
+                    nutritionalInfos = []
+                    for dish in dishes:
+                        nutritionalInfos.append(self.dishesFile.get_elem(dish).get_nutritional_info())
+                    
+                    # {       element        }                                     
+                    #[[calories, ..., protien], [calories, ..., protien], ...]
+                    printValuesTemp = []
+                    #for each nutrition fact
+                    for fact in nutritionalInfos:
+                        toPrint = self.__get_print_nutrition_info(fact)
+                        longest = self.__get_longest(toPrint)
+                        lengthLongest = len(toPrint[longest]) + 1
+
+                        for i in range(len(toPrint)):
+                            toPrint[i] = toPrint[i] + ((lengthLongest - len(toPrint[i])) * " ") + "| "
+
+                        printValuesTemp.append(toPrint)
+
+                    #[calories from all dishes, ..., protien from all dishes]
+                    printValues = ["" for item in range(len(printValuesTemp[0]))]
+                    #index from calories ... protien
+                    for i in range(len(printValuesTemp[0])):
+                        #index each element in printValuesTemp
+                        for j in range(len(printValuesTemp)):
+                            printValues[i] = printValues[i] + printValuesTemp[j][i]
+
+                    #print result
+                    for line in printValues:
+                        print(line)
+
                 else:
                     print("Input should be \"T\" or \"E\"")
     def __DELETE_DAY(self, name):
@@ -390,10 +423,10 @@ class Main:
     
         return toRet
 
-    #get the longest element in a list
+    #returns indicie of longest element in list
     def __get_longest(self, values):
 
         longest = 0
         for i in range(len(values)):
-            longest = max(longest, len(values[i]))
+            longest = i if len(values[i]) > len(values[longest]) else longest
         return longest
