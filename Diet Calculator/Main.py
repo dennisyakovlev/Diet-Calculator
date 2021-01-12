@@ -107,7 +107,7 @@ class Main:
             self.__print_all(self.daysFile)
         else:
             if not self.daysFile.elem_exists(name):
-                print("Day with this name does not exist")
+                print("\nDay with this name does not exist")
             else:
                
                 inp = input("\nGet nutritional information total(T) or for each dish(E): ")
@@ -202,7 +202,7 @@ class Main:
             self.__print_all(self.dishesFile)
         else:
             if not self.dishesFile.elem_exists(name):
-                print("Dish with this name does not exist")
+                print("\nDish with this name does not exist")
             else:
                 dish = self.dishesFile.get_elem(name)
 
@@ -255,7 +255,7 @@ class Main:
             self.__print_all(self.foodFile)
         else:
             if not self.foodFile.elem_exists(name):
-                print("Food with this name does not exist")
+                print("\nFood with this name does not exist")
             else:
                 food = self.foodFile.get_elem(name)
                 nutritionalInfo = food.get_nutritional_info()
@@ -293,7 +293,7 @@ class Main:
             self.__print_all(self.nuritionFile)
         else:
             if not self.nuritionFile.elem_exists(name):
-                print("Nurition fact with this name does not exist")
+                print("\nNurition fact with this name does not exist")
             else:
                 fact = self.nuritionFile.get_elem(name)
 

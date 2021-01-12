@@ -11,7 +11,7 @@ class File:
     #name is file name
     #elementType is in Base family of classes
     def __init__(self, name, elementType):
-        
+
         #the type of the element to be added
         self._type = elementType
         #the name of the file containing the information of the elements
