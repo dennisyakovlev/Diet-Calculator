@@ -107,7 +107,7 @@ class Main:
             self.__print_all(self.daysFile)
         else:
             if not self.daysFile.elem_exists(name):
-                print("\nDay with this name does not exist")
+                self.__print_name_error("Day with this name does not exist")
             else:
                
                 inp = input("\nGet nutritional information total(T) or for each dish(E): ")
@@ -159,20 +159,20 @@ class Main:
                     print("-" * (len(printValues[0]) - 1))
 
                 else:
-                    print("Input should be \"T\" or \"E\"")
+                    self.__print_name_error("Input should be \"T\" or \"E\"")
     def __DELETE_DAY(self, name):
 
         if name == "ALL":
             self.__remove_all(self.daysFile)
         else:
             if not self.daysFile.elem_exists(name):
-                print("Day with this name does not exist")
+                self.__print_name_error("Day with this name does not exist")
             else:
                 self.daysFile.remove_elem(name)
     def __ADD_DAY(self, name):
 
         if self.daysFile.elem_exists(name):
-            print("Day with this name already exists")
+            self.__print_name_error("Day with this name already exists")
         else:
             print("\nEnter dishes which make up day")
             print()
@@ -187,7 +187,7 @@ class Main:
                     break
 
                 if not self.dishesFile.elem_exists(dishName):
-                    print("Dish with this name does not exist")
+                    self.__print_name_error("Dish with this name does not exist")
                 else:
                     values.append(dishName)
 
@@ -202,7 +202,7 @@ class Main:
             self.__print_all(self.dishesFile)
         else:
             if not self.dishesFile.elem_exists(name):
-                print("\nDish with this name does not exist")
+                self.__print_name_error("Dish with this name does not exist")
             else:
                 dish = self.dishesFile.get_elem(name)
 
@@ -214,13 +214,13 @@ class Main:
             self.__remove_all(self.dishesFile)
         else:
             if not self.dishesFile.elem_exists(name):
-                print("Dish with this name does not exist")
+                self.__print_name_error("Dish with this name does not exist")
             else:
                 self.dishesFile.remove_elem(name)
     def __ADD_DISH(self, name):
                 
         if self.dishesFile.elem_exists(name):
-            print("Dish with this name already exists")
+            self.__print_name_error("Dish with this name already exists")
         else:
             
             print("\nEnter food name(s) and weight(s).")
@@ -237,7 +237,7 @@ class Main:
                     break
 
                 if not self.foodFile.elem_exists(foodName):
-                    print("Food with this name does not exist")
+                    self.__print_name_error("Food with this name does not exist")
                 else:
                     foodWeight = input("Weight of food to be added to dish: ")
 
@@ -255,7 +255,7 @@ class Main:
             self.__print_all(self.foodFile)
         else:
             if not self.foodFile.elem_exists(name):
-                print("\nFood with this name does not exist")
+                self.__print_name_error("Food with this name does not exist")
             else:
                 food = self.foodFile.get_elem(name)
                 nutritionalInfo = food.get_nutritional_info()
@@ -267,19 +267,19 @@ class Main:
             self.__remove_all(self.foodFile)
         else:
             if not self.foodFile.elem_exists(name):
-                print("Food with this name does not exist")
+                self.__print_name_error("Food with this name does not exist")
             else:
                 self.foodFile.remove_elem(name)
     def __ADD_FOOD(self, name):
 
         if self.foodFile.elem_exists(name):
-            print("Food with this name already exists")
+            self.__print_name_error("Food with this name already exists")
         else:
             nutritionName = input("\nName of nutrition fact that makes up food: ")
 
             #check that the nutrition fact actually exists
             if not self.nuritionFile.elem_exists(nutritionName):
-                print("Nurition fact with this name does not exist")
+                self.__print_name_error("Nurition fact with this name does not exist")
             else:
                 food = FoodType(name, [nutritionName, 100])
                 self.foodFile.add_elem(food)
@@ -293,7 +293,7 @@ class Main:
             self.__print_all(self.nuritionFile)
         else:
             if not self.nuritionFile.elem_exists(name):
-                print("\nNurition fact with this name does not exist")
+                self.__print_name_error("Nurition fact with this name does not exist")
             else:
                 fact = self.nuritionFile.get_elem(name)
 
@@ -304,13 +304,13 @@ class Main:
             self.__remove_all(self.nuritionFile)
         else:
             if not self.nuritionFile.elem_exists(name):
-                print("Nurition fact with this name does not exist")
+                self.__print_name_error("Nurition fact with this name does not exist")
             else:
                 self.nuritionFile.remove_elem(name)
     def __ADD_NUTRITION(self, name):
 
         if self.nuritionFile.elem_exists(name):
-            print("Nurition fact with this name already exists")
+            self.__print_name_error("Nurition fact with this name already exists")
         else:
             #get info
             print("\nEnter per 100g")
@@ -333,6 +333,11 @@ class Main:
             else:
                 print("\nEnter valid values")
          
+    #print when a name error occurs 
+    def __print_name_error(self, toPrint):
+
+        print("\n***" + toPrint + "***")
+
     #print all the items from a file
     def __print_all(self, file):
 
