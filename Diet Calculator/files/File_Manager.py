@@ -7,6 +7,8 @@ class File:
     nameExtension = "_names"
     temporaryExtension = "_temp"
     fileExtension = ".txt"
+    infoFolder = "store"
+    os.chdir(os.getcwd() + "\\store")
 
     #name is file name
     #elementType is in Base family of classes
@@ -21,11 +23,11 @@ class File:
         #the name of the temporary file
         self.tempFileName = name + self.temporaryExtension + self.fileExtension
 
-        if not os.path.isfile(self.fileName):
+        if not self.fileName in os.listdir():
             file = open(self.fileName, "w+")
             file.close()
         
-        if not os.path.isfile(self.namesFileName):
+        if not self.fileName in os.listdir():
             fileNames = open(self.namesFileName, "w+")
             fileNames.close()
 
@@ -49,9 +51,6 @@ class File:
 
     #add an element of the given type to teh file
     def add_elem(self, element):
-
-        #cast to a base element
-        #baseElement = self.__cast_to_base(element)
 
         #write to names file
         namesFile = open(self.namesFileName, "r+")
@@ -187,8 +186,4 @@ class File:
             if line.strip() == name:
                 return False
         return True
-            
-    def __cast_to_base(self, elem):
-
-        return Base(elem.get_name(), elem.get_values())
 

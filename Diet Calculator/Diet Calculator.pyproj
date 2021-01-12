@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c0261d4c-9ac0-4038-8a0e-7dd7a865fbee</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Diet_Calculator.py</StartupFile>
+    <StartupFile>files\Diet_Calculator.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,31 +21,35 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CONSTANTS.py">
+    <Compile Include="files\CONSTANTS.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Day.py">
+    <Compile Include="files\Day.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Diet_Calculator.py" />
-    <Compile Include="Dish.py">
+    <Compile Include="files\Diet_Calculator.py" />
+    <Compile Include="files\Dish.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Element_Base.py">
+    <Compile Include="files\Element_Base.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="File_Manager.py">
+    <Compile Include="files\File_Manager.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Food.py">
+    <Compile Include="files\Food.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Main.py">
+    <Compile Include="files\Main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Nutrition_Fact.py">
+    <Compile Include="files\Nutrition_Fact.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="files\" />
+    <Folder Include="store\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
