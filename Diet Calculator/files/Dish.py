@@ -1,4 +1,3 @@
-import Element_Base as E_Base
 from Food import Food as FoodType
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 from File_Manager import File as FileType
@@ -7,22 +6,24 @@ import CONSTANTS as CONST
 class Dish(E_Base.Element_Base):
 
     #name - name of dish
-    #not actual tuples
-    #values - [(food name, weight), (food name, weight), ...]
+    #values - [food name, weight, food name, weight, ...]
 
-    #retuns list of values containing nutritional info
+    #returns list of values corresponding to two added nutritional informations
     def __add__(self, other):
 
         return self.get_nutritional_info() + other.get_nutritional_info()
 
-    #returns list of values corresponding to nutritional information
+    #returns list of values corresponding to the total nutritional information of the dish
     def get_nutritional_info(self):
 
         file = FileType(CONST.FOOD_FILE_NAME, FoodType)
 
-        #get a nutritional info and its length then create list of 0's of the length got
-        fact = [ 0 * item for item in range( len( file.get_elem(self.values[0]).get_nutritional_info() ) ) ]
+        #create list of 0's of length dependant on number of elements
+        #in a nutritional information
+        #                                 {     get first food elem    } { get the info list  }
+        factInfo = [ 0 for _ in range( len(file.get_elem(self.values[0]).get_nutritional_info()) ) ]
 
+        #every second values is the name of a food
         for i in range(0 , len(self.values), 2):
             
             #get food
@@ -34,9 +35,9 @@ class Dish(E_Base.Element_Base):
             #how many more times than 100g there is
             multiplier = float(self.values[i + 1]) / 100
 
-            fact = NutritionType("", fact) + NutritionType("", nutritionalInfo * multiplier)
+            factInfo = NutritionType("", fact) + NutritionType("", nutritionalInfo * multiplier)
 
-        return fact
+        return factInfo
 
 
 

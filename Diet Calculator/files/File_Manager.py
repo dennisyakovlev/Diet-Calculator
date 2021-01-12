@@ -1,5 +1,4 @@
 import os
-from Element_Base import Element_Base as Base
 
 #methods return true on success and false on fail
 class File:

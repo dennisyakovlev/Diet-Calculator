@@ -10,12 +10,13 @@ class Nutrition_Fact(E_Base.Element_Base):
     def is_valid(self):
 
         for item in self.values:
+            #for decimals
             if not item.replace('.', "", 1).isnumeric():
                 return False
         return True
 
     #adds two nutrition facts
-    #returns list of values containing 8 info facts
+    #returns list of values containing 10 info facts
     def __add__(self, other):
 
         toRet = []
@@ -25,7 +26,7 @@ class Nutrition_Fact(E_Base.Element_Base):
 
     #n1 - n2
     #subtracts n2 FROM n1
-    #returns list of values containing 8 info facts
+    #returns list of values containing 10 info facts
     #return [] if one of values is negative
     def __sub__(self, other):
 
@@ -39,7 +40,7 @@ class Nutrition_Fact(E_Base.Element_Base):
 
     #nurition_Fact * number
     #multiplies all the 8 values by number
-    #return list of values containing 8 info facts
+    #return list of values containing 10 info facts
     def __mul__(self, number):
 
         values = [int(float(item) * float(number)) for item in self.values]

@@ -1,4 +1,3 @@
-import Element_Base as E_Base
 import CONSTANTS as CONST
 from File_Manager import File as FileType
 from Dish import Dish as DishType
@@ -9,12 +8,15 @@ class Day(E_Base.Element_Base):
     #name - name of day
     #values - [name of dish, name of dish, ...]
 
-    #returns list of values corresponding to nutritional information
+    #returns list of values corresponding to the total nutritional information in the day
     def get_nutritional_info(self):
 
         file = FileType(CONST.DISH_FILE_NAME, DishType)
 
-        fact = [ 0 * item for item in range(len(file.get_elem(self.get_values()[0]).get_nutritional_info())) ]
+        #create list of 0's of length dependant on number of elements
+        #in a nutritional information
+        #                                 {     get first dish elem    } { get the info list  }
+        factInfo = [ 0 for _ in range( len(file.get_elem(self.values[0]).get_nutritional_info()) ) ]
 
         #for each name of the dishes that make up the day
         for item in self.values:
@@ -22,6 +24,7 @@ class Day(E_Base.Element_Base):
             #get dish
             dish = file.get_elem(item)
 
-            fact = NutritionType("", fact) + NutritionType("", dish.get_nutritional_info())
+            #add to total
+            factInfo = NutritionType("", fact) + NutritionType("", dish.get_nutritional_info())
 
-        return fact
+        return factInfo
