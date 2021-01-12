@@ -1,3 +1,4 @@
+import Element_Base as E_Base
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 import CONSTANTS as CONST
 from File_Manager import File as FileType

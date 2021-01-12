@@ -32,6 +32,6 @@ class Element_Base:
     def get_length(self):
 
         return len(self.get_values())
-    s
+    
     #SHOULD NOT BE OVERWRITTEN
 

@@ -1,3 +1,4 @@
+import Element_Base as E_Base
 from Food import Food as FoodType
 from Nutrition_Fact import Nutrition_Fact as NutritionType
 from File_Manager import File as FileType
