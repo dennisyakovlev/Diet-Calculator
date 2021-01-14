@@ -1,6 +1,0 @@
-porkchop_names
-raw lean porkchop
-100
-pasta_names
-raw pasta
-100

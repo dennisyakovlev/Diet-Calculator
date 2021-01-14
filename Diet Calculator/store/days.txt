@@ -1,3 +1,0 @@
-day one_names
-TEST
-test2
