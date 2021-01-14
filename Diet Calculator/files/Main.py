@@ -21,6 +21,13 @@ class Main:
        #set commands
 
        #set printing params
+       self.commandValues = ["Access day commands: ", \
+                             "Access dish commands", \
+                             "Access food commands: ", \
+                             "Access nutritional information commands: ", \
+                             "Exit the program: "]
+       self.commandSpaces = self.__get_spaces(self.commandValues)
+
        self.nutritionItems = ["Calories:", \
                               "Fat:", 
                               "     Saturated Fat:", \
@@ -32,14 +39,6 @@ class Main:
                               "     Sugar", \
                               "Protien"]
        self.nutritionSpaces = self.__get_spaces(self.nutritionItems)
-
-
-       self.commandValues = ["Access day commands: ", \
-                             "Access food commands: ", \
-                             "Access nutritional information commands: ", \
-                             "Exit the program: ", \
-                             "Access dish commands"]
-       self.commandSpaces = self.__get_spaces(self.commandValues)
        #set printing params
 
        #create printing list
