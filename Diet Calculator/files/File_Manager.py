@@ -7,7 +7,6 @@ class File:
     temporaryExtension = "_temp"
     fileExtension = ".txt"
     infoFolder = "store"
-    os.chdir(os.getcwd() + "\\store")
 
     #name is file name
     #elementType is in Base family of classes
@@ -26,7 +25,7 @@ class File:
             file = open(self.fileName, "w+")
             file.close()
         
-        if not self.fileName in os.listdir():
+        if not self.namesFileName in os.listdir():
             fileNames = open(self.namesFileName, "w+")
             fileNames.close()
 
