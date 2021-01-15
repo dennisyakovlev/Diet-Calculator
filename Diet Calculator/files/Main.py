@@ -61,16 +61,25 @@ class Main:
        #create files
 
        #first print
-       print("Instructions: ")
+       print("Instructions:")
+       
+       print()
+
        print("All commands are in capitol letters. They are case sensitive.\n" + \
-             "To add, get, or remove an item, type that items actions, then the\n" + \
-             "corresponding command.\n")
+             "Commands to access and item are under \"COMMANDS\"\n" + \
+             "Entering a command brings up that items actions\n" + \
+             "which are ADD, GET, and REMOVE.\n" + \
+             "Some items have special actions, they will explititly state this.")
        
-       print("Special words")
-       print("ALL - Gets the names of all the requested items.\n" + \
-             "    - Works with GET and REMOVE actions.\n")
+       print()
+
+       print("ALL is a special word that can be used with the GET and REMOVE actions.\n" + \
+             "With get it print the names of all of the type of item.\n" + \
+             "With remove it removes all of the type of item.")
        
-       print("The following are what can be created.")
+       print()
+
+       print("The following are the items.")
        print("Nutrition Fact:\n")
        print("     - This is the first information to be entered\n" + \
              "     - Enter information per 100g")
@@ -80,6 +89,11 @@ class Main:
        print("     - Consists of any number of foods of any weight")
        print("Day:\n")
        print("     - Consists of any number of dishes")
+
+       print()
+       print("-" * 20 + "SCROLL TO TOP FOR COMPLETE INSTRUCTIONS" + "-" * 20)
+       print()
+
        #first print
 
        #consle loop
@@ -95,7 +109,11 @@ class Main:
            print()
 
            if inp not in self.dict:
-               print("Enter valid command")
+               comm = ""
+               for item in self.commands[:-1]:
+                   comm = comm + item + " or "
+               comm = comm + self.commands[-1]
+               print("Enter valid command of: " + comm)
            else:
                #run function call
                self.dict[inp]()
@@ -398,7 +416,7 @@ class Main:
         inp = input("Enter action: ")
 
         if inp != "REMOVE" and inp != "ADD" and inp != "GET":
-            print("\nEnter valid action")
+            print("\nEnter valid action of: REMOVE or ADD or GET")
         else:
             print()
 
