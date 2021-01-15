@@ -65,8 +65,8 @@ class Main:
        
        print()
 
-       print("All commands are in capitol letters. They are case sensitive.\n" + \
-             "Commands to access and item are under \"COMMANDS\"\n" + \
+       print("All commands are in capital letters. They are case sensitive.\n" + \
+             "Commands to access an item are under \"COMMANDS\"\n" + \
              "Entering a command brings up that items actions\n" + \
              "which are ADD, GET, and REMOVE.\n" + \
              "Some items have special actions, they will explititly state this.")
@@ -226,7 +226,9 @@ class Main:
                     break
 
                 if not self.dishesFile.elem_exists(dishName):
-                    self.__print_name_error("Dish with this name does not exist")
+                    self.__print_name_error("\nDish with this name does not exist." + \
+                                            "\nMust create this dish using DISH command." + \
+                                            "\nPress enter to exit this command.\n")
                 else:
                     values.append(dishName)
 
@@ -276,7 +278,9 @@ class Main:
                     break
 
                 if not self.foodFile.elem_exists(foodName):
-                    self.__print_name_error("Food with this name does not exist")
+                    self.__print_name_error("\nFood with this name does not exist." + \
+                                            "\nMust create this dish using FOOD command." + \
+                                            "\nPress enter to exit this command.\n")
                 else:
                     foodWeight = input("Weight of food to be added to dish: ")
 
@@ -318,7 +322,9 @@ class Main:
 
             #check that the nutrition fact actually exists
             if not self.nuritionFile.elem_exists(nutritionName):
-                self.__print_name_error("Nurition fact with this name does not exist")
+                self.__print_name_error("\nNutrition Fact with this name does not exist." + \
+                                        "\nMust create this dish using NUTRITION command." + \
+                                        "\nPress enter to exit this command.\n")
             else:
                 food = FoodType(name, [nutritionName, 100])
                 self.foodFile.add_elem(food)
@@ -375,7 +381,7 @@ class Main:
     #print when a name error occurs 
     def __print_name_error(self, toPrint):
 
-        print("\n***" + toPrint + "***")
+        print("\n***" + toPrint + "***\n")
 
     #print all the items from a file
     def __print_all(self, file):
