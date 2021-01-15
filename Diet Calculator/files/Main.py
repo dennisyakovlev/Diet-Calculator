@@ -12,19 +12,17 @@ class Main:
     def __init__(self):
         
        #set commands
-       self.commands = ["DAY", "DISH", "FOOD", "NUTRITION", "EXIT"]
+       self.commands = ["DAY", "DISH", "FOOD", "EXIT"]
        self.dict = {self.commands[0]: self.__DAY, \
                     self.commands[1]: self.__DISH, \
                     self.commands[2]: self.__FOOD, \
-                    self.commands[3]: self.__NUTRITION, \
-                    self.commands[4]: self.__EXIT}
+                    self.commands[3]: self.__EXIT}
        #set commands
 
        #set printing params
        self.commandValues = ["Access day commands: ", \
                              "Access dish commands", \
                              "Access food commands: ", \
-                             "Access nutritional information commands: ", \
                              "Exit the program: "]
        self.commandSpaces = self.__get_spaces(self.commandValues)
 
@@ -218,6 +216,7 @@ class Main:
             
             values = []
             dishName = " "
+            hadError = False
             while True:
 
                 dishName = input("Name of dish: ")
@@ -226,13 +225,15 @@ class Main:
                     break
 
                 if not self.dishesFile.elem_exists(dishName):
+                    hadError = True
                     self.__print_name_error("\nDish with this name does not exist." + \
                                             "\nMust create this dish using DISH command." + \
                                             "\nPress enter to exit this command.\n")
                 else:
                     values.append(dishName)
-
-            self.daysFile.add_elem(DayType(name, values))
+            
+            if not hadError:
+                self.daysFile.add_elem(DayType(name, values))
 
     def __DISH(self):
 
@@ -269,6 +270,7 @@ class Main:
 
             values = []
             foodName = " "
+            hadError = False
             #get values to create dish
             while True:
 
@@ -278,6 +280,7 @@ class Main:
                     break
 
                 if not self.foodFile.elem_exists(foodName):
+                    hadError = True
                     self.__print_name_error("\nFood with this name does not exist." + \
                                             "\nMust create this dish using FOOD command." + \
                                             "\nPress enter to exit this command.\n")
@@ -287,7 +290,8 @@ class Main:
                     values.append(foodName)
                     values.append(foodWeight)
 
-            self.dishesFile.add_elem(DishType(name, values))     
+            if not hadError:
+                self.dishesFile.add_elem(DishType(name, values))     
 
     def __FOOD(self):
 
