@@ -1,5 +1,3 @@
-Consle App for diet calculations.
+Consle App for keeping track of nutritional info.
 
-Nutrition Facts should be entered per 100g of food.
-
-Click Enter when done entering command or you want to exit command after entering info.
+To run, double click on Diet_Calculator.py located in /Diet Calculator/Files

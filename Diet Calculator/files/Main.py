@@ -61,10 +61,25 @@ class Main:
        #create files
 
        #first print
-       print("Special words\n")
+       print("Instructions: ")
+       print("All commands are in capitol letters. They are case sensitive.\n" + \
+             "To add, get, or remove an item, type that items actions, then the\n" + \
+             "corresponding command.\n")
+       
+       print("Special words")
        print("ALL - Gets the names of all the requested items.\n" + \
-             "    - Works with GET and REMOVE actions.")
-       print()
+             "    - Works with GET and REMOVE actions.\n")
+       
+       print("The following are what can be created.")
+       print("Nutrition Fact:\n")
+       print("     - This is the first information to be entered\n" + \
+             "     - Enter information per 100g")
+       print("Food:\n")
+       print("     - Uses a nutritional information to hold its value")
+       print("Dish:\n")
+       print("     - Consists of any number of foods of any weight")
+       print("Day:\n")
+       print("     - Consists of any number of dishes")
        #first print
 
        #consle loop
