@@ -219,7 +219,7 @@ class Main:
             hadError = False
             while True:
 
-                dishName = input("Name of dish: ")
+                dishName = input("Name of dish (hit enter to exit): ")
 
                 if dishName == "":
                     break
@@ -274,7 +274,7 @@ class Main:
             #get values to create dish
             while True:
 
-                foodName = input("Name of food: ")
+                foodName = input("Name of food (hit enter to exit): ")
 
                 if foodName == "":
                     break

@@ -36,7 +36,7 @@ class Dish(E_Base.Element_Base):
             #how many more times than 100g there is
             multiplier = float(self.values[i + 1]) / 100
 
-            factInfo = NutritionType("", fact) + NutritionType("", nutritionalInfo * multiplier)
+            factInfo = NutritionType("", factInfo) + NutritionType("", nutritionalInfo * multiplier)
 
         return factInfo
 
