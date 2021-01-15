@@ -318,16 +318,10 @@ class Main:
         if self.foodFile.elem_exists(name):
             self.__print_name_error("Food with this name already exists")
         else:
-            nutritionName = input("\nName of nutrition fact that makes up food: ")
+            self.__ADD_NUTRITION(name)
 
-            #check that the nutrition fact actually exists
-            if not self.nuritionFile.elem_exists(nutritionName):
-                self.__print_name_error("\nNutrition Fact with this name does not exist." + \
-                                        "\nMust create this dish using NUTRITION command." + \
-                                        "\nPress enter to exit this command.\n")
-            else:
-                food = FoodType(name, [nutritionName, 100])
-                self.foodFile.add_elem(food)
+            food = FoodType(name, [name, 100])
+            self.foodFile.add_elem(food)
 
     def __NUTRITION(self):
                 
