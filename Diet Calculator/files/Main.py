@@ -42,9 +42,15 @@ class Main:
        #set printing params
 
        #create printing list
+       temp = []
+       #replace first item with later with command
        self.printItems = []
        for i in range(0, len(self.commands)):
            self.printItems.append(self.commandValues[i] + self.commandSpaces[i] + self.commands[i])
+           temp.append(self.commandValues[i] + self.commandSpaces[i])
+       
+       spacing = self._get_longest_val(temp)
+       self.command = "\n" + (" " * spacing) + "COMMANDS\n"
        #create printing list
 
        #create files
@@ -89,7 +95,8 @@ class Main:
         
         print("-" * maxLen)
 
-        print("Commands:\n")
+        #print(self.command)
+        print(self.command)
         for item in self.printItems:
             print(item)
 
@@ -444,7 +451,7 @@ class Main:
     #return size of longest element in list
     def _get_longest_val(self, values):
 
-        longest = len(values[0])
-        for item in values[1:]:
-            longest = len(item) if len(item) > len(values[longest]) else longest
+        longest = 0
+        for item in values:
+            longest = len(item) if len(item) > longest else longest
         return longest
