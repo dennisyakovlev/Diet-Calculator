@@ -295,7 +295,31 @@ class Main:
             if not hadError:
                 self.dishesFile.add_elem(DishType(name, values))     
     def __CHANGE_DISH(self, name) :
-        pass
+        
+        if not self.dishesFile.elem_exists(name):
+            self.__print_name_error("Dish with this name does not exist")
+        else:
+            dish = self.dishesFile.get_elem(name)
+
+            values = dish.get_values()
+
+            foods = []
+            weights = []
+            for i in range(0, len(values), 2):
+                foods.append(values[i])
+                weights.append(values[i + 1])
+
+            longest = self._get_longest_val(foods)
+
+            print("\nFoods that make up dish \"" + name + "\": ")
+            for i in range(len(foods)):
+                print( "Food: " + ((longest - len(foods[i])) * " ") + foods[i] + " | Weight: " + str(weights[i]) + " g" )
+
+            while True:
+                input("\nADD - to add food to dish\n" + \
+                      "REMOVE - to remove food from dish\n")
+
+
 
     def __FOOD(self):
 
@@ -331,7 +355,9 @@ class Main:
             food = FoodType(name, [name, 100])
             self.foodFile.add_elem(food)
     def __CHANGE_FOOD(self, name):
+        
         pass
+
 
     def __NUTRITION(self):
                 
