@@ -119,7 +119,7 @@ class File:
 
         self.__remoe_elem_name(name)
         self.__remove_elem_values(name)       
-    
+
     #delete name from names file
     def __remoe_elem_name(self, name):
         

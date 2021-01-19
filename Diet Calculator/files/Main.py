@@ -137,7 +137,7 @@ class Main:
 
     def __DAY(self):
         
-        self.__options("day", [self.__DELETE_DAY, self.__ADD_DAY, self.__GET_DAY])
+        self.__options("day", [self.__DELETE_DAY, self.__ADD_DAY, self.__GET_DAY, self.__CHANGE_DAY])
     def __GET_DAY(self, name):
 
         if name == "ALL":
@@ -234,10 +234,12 @@ class Main:
             
             if not hadError:
                 self.daysFile.add_elem(DayType(name, values))
+    def __CHANGE_DAY(self, name):
+        pass
 
     def __DISH(self):
 
-        self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH])
+        self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH, self.__CHANGE_DISH])
     def __GET_DISH(self, name):
 
         if name == "ALL":
@@ -292,10 +294,12 @@ class Main:
 
             if not hadError:
                 self.dishesFile.add_elem(DishType(name, values))     
+    def __CHANGE_DISH(self, name) :
+        pass
 
     def __FOOD(self):
 
-        self.__options("food", [self.__DELETE_FOOD, self.__ADD_FOOD, self.__GET_FOOD])
+        self.__options("food", [self.__DELETE_FOOD, self.__ADD_FOOD, self.__GET_FOOD, self.__CHANGE_FOOD])
     def __GET_FOOD(self, name):
 
         if name == "ALL":
@@ -326,6 +330,8 @@ class Main:
 
             food = FoodType(name, [name, 100])
             self.foodFile.add_elem(food)
+    def __CHANGE_FOOD(self, name):
+        pass
 
     def __NUTRITION(self):
                 
@@ -413,14 +419,15 @@ class Main:
     #functions - list of functions to be called with input as item name
     def __options(self, toPrint, functions):
 
-        print("Remove " + toPrint + ": REMOVE\n" +
-                    "Add  " + toPrint + ": ADD\n" +
-                    "Get " + toPrint + ": GET\n")
+        print("Remove " + toPrint + ": REMOVE\n" + \
+              "Add  " + toPrint + ": ADD\n" + \
+              "Get " + toPrint + ": GET\n" + \
+              "Change " + toPrint + ": CHANGE\n")
 
         inp = input("Enter action: ")
 
-        if inp != "REMOVE" and inp != "ADD" and inp != "GET":
-            print("\nEnter valid action of: REMOVE or ADD or GET")
+        if inp != "REMOVE" and inp != "ADD" and inp != "GET" and inp != "CHANGE":
+            print("\nEnter valid action of: REMOVE or ADD or GET or CHANGE")
         else:
             print()
 
@@ -432,6 +439,8 @@ class Main:
                 functions[1](name)
             elif inp == "GET":
                 functions[2](name)
+            elif inp == "CHANGE":
+                functions[3](name)
 
     #name - name to be printed
     #fact - list of values from nutrition fact to be printed

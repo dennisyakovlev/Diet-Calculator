@@ -4,13 +4,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c0261d4c-9ac0-4038-8a0e-7dd7a865fbee</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>files\Diet_Calculator.py</StartupFile>
+    <StartupFile>.\files\Diet_Calculator.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Diet Calculator</Name>
     <RootNamespace>Diet Calculator</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
