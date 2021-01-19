@@ -311,13 +311,27 @@ class Main:
 
             longest = self._get_longest_val(foods)
 
-            print("\nFoods that make up dish \"" + name + "\": ")
+            print("\nFoods that make up dish \"" + name + "\":\n")
             for i in range(len(foods)):
                 print( "Food: " + ((longest - len(foods[i])) * " ") + foods[i] + " | Weight: " + str(weights[i]) + " g" )
 
+            print()
+            print("To remove food: enter R, then food name (R name)\n" + \
+                  "To add food: enter A, then food name, then weight (A name number)\n" + \
+                  "To change weight of food already in dish: enter C, then food name, then weight (C name number)")
             while True:
-                input("\nADD - to add food to dish\n" + \
-                      "REMOVE - to remove food from dish\n")
+                inp = input("Enter: ")
+                food, comm = inp.split(" ")
+                if comm == "ADD":
+                    pass
+                if comm != "ADD" and comm != "REMOVE":
+                    print("Enter valid command of ADD or REMOVE")
+                    break
+                if not self.foodFile.elem_exists(food):
+                    self.__print_name_error("Food with this name does not exist")
+                    break
+
+
 
 
 
