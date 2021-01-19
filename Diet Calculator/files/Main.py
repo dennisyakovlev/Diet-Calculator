@@ -102,7 +102,7 @@ class Main:
            print()
 
            #get function call
-           inp = input("Enter Command: ")
+           inp = input("Enter Command: ").strip()
 
            print()
 
@@ -354,7 +354,17 @@ class Main:
                                 values.append(food)
                                 values.append(info[2])
                 elif comm == "C":
-                    pass
+                    
+                    #check for correct input, skip if input is not correct
+                    if len(info) == 3:
+                        food = info[1]
+                        if not food in values:
+                            print("\nFood with this name not in values.")
+                        else:
+                            #check that number is actually number
+                            if info[2].replace(".", "", 1).isnumeric():
+                                #change weight of food
+                                values[values.index(food) + 1] = info[2]
                 elif comm == "":
                     break
                 else:
@@ -495,7 +505,7 @@ class Main:
               "Get " + toPrint + ": GET\n" + \
               "Change " + toPrint + ": CHANGE\n")
 
-        inp = input("Enter action: ")
+        inp = input("Enter action: ").strip()
 
         if inp != "REMOVE" and inp != "ADD" and inp != "GET" and inp != "CHANGE":
             print("\nEnter valid action of: REMOVE or ADD or GET or CHANGE")
