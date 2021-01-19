@@ -251,7 +251,7 @@ class Main:
 
             print()
             print("To remove dish: enter a dish name in the day\n" + \
-                  "To add dish: enter a dish name not in the day.\n")
+                  "To add dish: enter a dish name not in the day.")
             while True:
                 print()
                 inp = input("Type dish name (press enter to exit): ").strip()
