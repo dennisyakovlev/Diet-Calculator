@@ -340,7 +340,19 @@ class Main:
                         #remove the food weight from the list
                         values.pop(index)
                 elif comm == "A":
-                    pass
+                    
+                    #check for correct input, skip if input is not correct
+                    if len(info) == 3:
+                        food = info[1]
+                        if food in values:
+                            print("\nFood with this name is already in dish. Try using C.")
+                        elif not self.foodFile.elem_exists(food):
+                            print("\nFood with this name does not exist.")
+                        else:
+                            #check that number is actually number
+                            if info[2].replace(".", "", 1).isnumeric():
+                                values.append(food)
+                                values.append(info[2])
                 elif comm == "C":
                     pass
                 elif comm == "":
