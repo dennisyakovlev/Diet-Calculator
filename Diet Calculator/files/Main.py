@@ -235,6 +235,7 @@ class Main:
             if not hadError:
                 self.daysFile.add_elem(DayType(name, values))
     def __CHANGE_DAY(self, name):
+        
         pass
 
     #need to make it so that a food can only be added ONCE to a dish
@@ -329,11 +330,14 @@ class Main:
                 if comm == "R":
                     
                     food = info[1]
-                    if not self.foodFile.elem_exists(food):
-                        self.__print_name_error("Food with this name does not exist")
+                    if not food in values:
+                        print("\nFood with this name is not in dish.")
                     else:
+                        #get index of food name in the list of values comprising the dish
                         index = values.index(food)
+                        #remove the food name from the list
                         values.pop(index)
+                        #remove the food weight from the list
                         values.pop(index)
                 elif comm == "A":
                     pass
@@ -343,10 +347,11 @@ class Main:
                     break
                 else:
                     print("\nFirst letter must be R or A or C")
-                
-            #newDish = DishType(name, values)
-
-
+               
+            #after all command have been run, delete old dish and add the new one
+            newDish = DishType(name, values)
+            self.dishesFile.remove_elem(name)
+            self.dishesFile.add_elem(newDish)
 
 
     def __FOOD(self):

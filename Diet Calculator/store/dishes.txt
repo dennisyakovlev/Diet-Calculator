@@ -1,5 +1,3 @@
 d_names
 test
 250
-test2
-50
