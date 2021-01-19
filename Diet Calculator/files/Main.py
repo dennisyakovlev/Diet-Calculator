@@ -245,7 +245,31 @@ class Main:
 
             longest = self._get_longest_val(dishes)
 
+            print("\nDishes that make up day \"" + name + "\"")
+            for item in dishes:
+                print( "Dish: " + ((longest - len(item)) * " ") + item)
 
+            print()
+            print("To remove dish: enter a dish name in the day\n" + \
+                  "To add dish: enter a dish name not in the day.\n")
+            while True:
+                print()
+                inp = input("Type dish name (press enter to exit): ").strip()
+
+                if inp in dishes:
+                    dishes.pop(dishes.index(inp))
+                elif self.dishesFile.elem_exists(inp):
+                    dishes.append(inp)
+                elif inp == "":
+                    break
+                else:
+                    print("\nDish does not exist.")
+
+            #after all commands have been run, delete old day and add the new one
+            newDay = DayType(name, dishes)
+            self.daysFile.remove_elem(name)
+            self.daysFile.add_elem(newDay)
+                
 
     #need to make it so that a food can only be added ONCE to a dish
     def __DISH(self):
@@ -378,7 +402,7 @@ class Main:
                 else:
                     print("\nFirst letter must be R or A or C")
                
-            #after all command have been run, delete old dish and add the new one
+            #after all commands have been run, delete old dish and add the new one
             newDish = DishType(name, values)
             self.dishesFile.remove_elem(name)
             self.dishesFile.add_elem(newDish)
