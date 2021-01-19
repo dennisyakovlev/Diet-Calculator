@@ -236,7 +236,16 @@ class Main:
                 self.daysFile.add_elem(DayType(name, values))
     def __CHANGE_DAY(self, name):
         
-        pass
+        if not self.daysFile.elem_exists(name):
+            self.__print_name_error("Dish with this name does not exist")
+        else:
+            day = self.daysFile.get_elem(name)
+
+            dishes = day.get_values()
+
+            longest = self._get_longest_val(dishes)
+
+
 
     #need to make it so that a food can only be added ONCE to a dish
     def __DISH(self):
@@ -270,7 +279,6 @@ class Main:
         else:
             
             print("\nEnter food name(s) and weight(s).")
-            print()
 
             values = []
             foodName = " "
@@ -278,7 +286,7 @@ class Main:
             #get values to create dish
             while True:
 
-                foodName = input("Name of food (hit enter to exit): ")
+                foodName = input("\nName of food (hit enter to exit): ")
 
                 if foodName == "":
                     break
