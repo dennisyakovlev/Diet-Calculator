@@ -237,6 +237,7 @@ class Main:
     def __CHANGE_DAY(self, name):
         pass
 
+    #need to make it so that a food can only be added ONCE to a dish
     def __DISH(self):
 
         self.__options("dish", [self.__DELETE_DISH, self.__ADD_DISH, self.__GET_DISH, self.__CHANGE_DISH])
@@ -320,17 +321,30 @@ class Main:
                   "To add food: enter A, then food name, then weight (A name number)\n" + \
                   "To change weight of food already in dish: enter C, then food name, then weight (C name number)")
             while True:
-                inp = input("Enter: ")
-                food, comm = inp.split(" ")
-                if comm == "ADD":
-                    pass
-                if comm != "ADD" and comm != "REMOVE":
-                    print("Enter valid command of ADD or REMOVE")
-                    break
-                if not self.foodFile.elem_exists(food):
-                    self.__print_name_error("Food with this name does not exist")
-                    break
+                print()
+                inp = input("Type input (press entr to exit): ")
+                info = inp.strip().split(" ")
+                comm = info[0]
 
+                if comm == "R":
+                    
+                    food = info[1]
+                    if not self.foodFile.elem_exists(food):
+                        self.__print_name_error("Food with this name does not exist")
+                    else:
+                        index = values.index(food)
+                        values.pop(index)
+                        values.pop(index)
+                elif comm == "A":
+                    pass
+                elif comm == "C":
+                    pass
+                elif comm == "":
+                    break
+                else:
+                    print("\nFirst letter must be R or A or C")
+                
+            #newDish = DishType(name, values)
 
 
 
