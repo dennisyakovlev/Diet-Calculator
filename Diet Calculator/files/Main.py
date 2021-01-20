@@ -460,17 +460,19 @@ class Main:
 
             while True:
 
-                inp = input("Enter number from 0 to 9, then number (x y): ")
+                inp = input("Enter number from 0 to 9, then number (press enter to exit): ")
 
-                tupe = inp.split(" ")
+                tupe = inp.strip().split(" ")
                 if len(tupe) == 2 and tupe[0].isnumeric() and 0 <= int(tupe[0]) <= 9 and tupe[1].isnumeric():
                     values[int(tupe[0])] = tupe[1]
+                elif tupe[0] == "":
+                    break
                 else:
                     print("\nEnter valid input.")
 
-            newFood = FoodType(name, values)
-            self.foodsFile.remove_elem(name)
-            self.foodsFile.add_elem(newFood)
+            #should change the nutrition value in the food
+            self.__CHANGE_NUTRITION(name, values)
+            newNutrition = self.nuritionFile.get_elem(name)
 
     def __NUTRITION(self):
                 
@@ -522,6 +524,15 @@ class Main:
             
             print("\nEnter valid values")
             return False
+    def __CHANGE_NUTRITION(self, name, values):
+        
+        if not self.nuritionFile.elem_exists(name):
+            self.__print_name_error("Nutrition fact does not exist.")
+        else:
+            self.nuritionFile.remove_elem(name)
+
+            toAdd = NutritionType(name, values)
+            self.nuritionFile.add_elem(toAdd)
          
     #print when a name error occurs 
     def __print_name_error(self, toPrint):
