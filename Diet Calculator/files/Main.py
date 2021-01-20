@@ -460,7 +460,7 @@ class Main:
 
             while True:
 
-                inp = input("Enter number from 0 to 9, then number (press enter to exit): ")
+                inp = input("\nEnter number from 0 to 9, then number (press enter to exit): ")
 
                 tupe = inp.strip().split(" ")
                 if len(tupe) == 2 and tupe[0].isnumeric() and 0 <= int(tupe[0]) <= 9 and tupe[1].isnumeric():
@@ -470,7 +470,6 @@ class Main:
                 else:
                     print("\nEnter valid input.")
 
-            #should change the nutrition value in the food
             self.__CHANGE_NUTRITION(name, values)
             newNutrition = self.nuritionFile.get_elem(name)
 
