@@ -442,8 +442,31 @@ class Main:
                 self.foodFile.add_elem(food)
     def __CHANGE_FOOD(self, name):
         
-        pass
+        if not self.foodFile.elem_exists(name):
+            self.__print_name_error("Food with this name does not exist")
+        else:
+            
+            food = self.foodFile.get_elem(name)
 
+            values = food.get_nutritional_info()
+
+            print("To change the number of a nutritional item type the number before\n" +  
+                  "that then the new value. Typing \"9 50\" would change protien to 50g.")
+            print("Current nutritional information for \"" + name + "\" per 100g.\n")
+            printVals = self.__get_print_nutrition_info(values)
+
+            for i in range(len(printVals)):
+                print(str(i) + ") " + printVals[i])
+
+            while True:
+
+                inp = input("Enter number from 0 to 9, then number (x y): ")
+
+                tupe = inp.split(" ")
+                if len(tupe) == 2 and tupe[0].isnumeric() and 0 <= tupe[0] <= 9 and tupe[1].isnumeric():
+                    values[tupe[0]] = tupe[1]
+                else:
+                    print("\nEnter valid input.")
 
     def __NUTRITION(self):
                 
