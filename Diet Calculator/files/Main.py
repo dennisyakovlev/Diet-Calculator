@@ -463,10 +463,14 @@ class Main:
                 inp = input("Enter number from 0 to 9, then number (x y): ")
 
                 tupe = inp.split(" ")
-                if len(tupe) == 2 and tupe[0].isnumeric() and 0 <= tupe[0] <= 9 and tupe[1].isnumeric():
-                    values[tupe[0]] = tupe[1]
+                if len(tupe) == 2 and tupe[0].isnumeric() and 0 <= int(tupe[0]) <= 9 and tupe[1].isnumeric():
+                    values[int(tupe[0])] = tupe[1]
                 else:
                     print("\nEnter valid input.")
+
+            newFood = FoodType(name, values)
+            self.foodsFile.remove_elem(name)
+            self.foodsFile.add_elem(newFood)
 
     def __NUTRITION(self):
                 
