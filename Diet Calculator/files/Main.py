@@ -437,10 +437,9 @@ class Main:
         if self.foodFile.elem_exists(name):
             self.__print_name_error("Food with this name already exists")
         else:
-            self.__ADD_NUTRITION(name)
-
-            food = FoodType(name, [name, 100])
-            self.foodFile.add_elem(food)
+            if self.__ADD_NUTRITION(name):
+                food = FoodType(name, [name, 100])
+                self.foodFile.add_elem(food)
     def __CHANGE_FOOD(self, name):
         
         pass
@@ -492,8 +491,10 @@ class Main:
 
             if nutrition.is_valid():
                 self.nuritionFile.add_elem(nutrition)
-            else:
-                print("\nEnter valid values")
+                return True
+            
+            print("\nEnter valid values")
+            return False
          
     #print when a name error occurs 
     def __print_name_error(self, toPrint):
