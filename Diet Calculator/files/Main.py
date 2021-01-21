@@ -102,7 +102,7 @@ class Main:
            print()
 
            #get function call
-           inp = input("Enter Command: ").strip()
+           inp = input("Enter Command: ").strip().upper()
 
            print()
 
@@ -575,7 +575,7 @@ class Main:
               "Get " + toPrint + ": GET\n" + \
               "Change " + toPrint + ": CHANGE\n")
 
-        inp = input("Enter action: ").strip()
+        inp = input("Enter action: ").strip().upper()
 
         if inp != "REMOVE" and inp != "ADD" and inp != "GET" and inp != "CHANGE":
             print("\nEnter valid action of: REMOVE or ADD or GET or CHANGE")
