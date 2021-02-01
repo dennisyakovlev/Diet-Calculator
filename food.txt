@@ -1,9 +1,0 @@
-tilapia_names
-tilapia
-100
-cod_names
-cod
-100
-porkchop_names
-porkchop
-100
