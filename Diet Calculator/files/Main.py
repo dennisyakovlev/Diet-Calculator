@@ -250,20 +250,26 @@ class Main:
                 print( "Dish: " + ((longest - len(item)) * " ") + item)
 
             print()
-            print("To remove dish: enter a dish name in the day\n" + \
-                  "To add dish: enter a dish name not in the day.")
+            print("To remove dish: enter R, then enter a dish name in the day (R name)\n" + \
+                  "To add dish: enter A, then enter a dish name not in the day (A name)")
             while True:
                 print()
-                inp = input("Type dish name (press enter to exit): ").strip()
+                inp = input("Type letter A or R then dish name (press enter to exit): ").strip()
+                inputs = inp.split(' ', 1)
 
-                if inp in dishes:
-                    dishes.pop(dishes.index(inp))
-                elif self.dishesFile.elem_exists(inp):
-                    dishes.append(inp)
-                elif inp == "":
+                if len(inputs) == 1:
                     break
-                else:
-                    print("\nDish does not exist.")
+                elif inputs[0] == 'R':
+                    if inputs[1] in dishes:
+                        dishes.pop(dishes.index(inputs[1]))
+                    else:
+                        print("\nDish not in this day.")
+                elif inputs[0] == 'A':
+                    if self.dishesFile.elem_exists(inputs[1]):
+                        dishes.append(inputs[1])
+                    else:
+                        print("\nDish does not exist.")
+                                
 
             #after all commands have been run, delete old day and add the new one
             newDay = DayType(name, dishes)
