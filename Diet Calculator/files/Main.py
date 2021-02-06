@@ -316,7 +316,7 @@ class Main:
                     break
 
                 if not self.foodFile.elem_exists(foodName):
-                    hadError = True
+                    #hadError = True
                     self.__print_name_error("\nFood with this name does not exist." + \
                                             "\nMust create this dish using FOOD command." + \
                                             "\nPress enter to exit this command.\n")
@@ -326,7 +326,8 @@ class Main:
                     values.append(foodName)
                     values.append(foodWeight)
 
-            if not hadError:
+            #if not hadError:
+            if not values == []:
                 self.dishesFile.add_elem(DishType(name, values))     
     def __CHANGE_DISH(self, name) :
         
@@ -356,7 +357,7 @@ class Main:
             while True:
                 print()
                 inp = input("Type input (press entr to exit): ")
-                info = inp.strip().split(" ")
+                info = inp.strip().split(" ", 1)
                 comm = info[0]
 
                 if comm == "R":
