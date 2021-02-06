@@ -27,3 +27,9 @@ four
 1
 five
 1
+hmmm_names
+three
+200
+hmf_names
+one
+100

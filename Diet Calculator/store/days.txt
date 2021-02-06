@@ -1,7 +1,3 @@
-monday_names
-one
-two
-three
 tuesday_names
 four
 five
@@ -11,3 +7,6 @@ two
 three
 four
 five
+monday_names
+two
+three

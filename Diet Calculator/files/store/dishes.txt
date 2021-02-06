@@ -1,0 +1,56 @@
+smoothie with milk_names
+orange juice
+250
+milk
+50
+protien powder
+100
+strawberries
+150
+3 bacon, 2 eggs, buttered bun_names
+egg
+200
+bacon
+81
+costco bun
+100
+butter
+5
+pasta and tilapia_names
+tilapia
+460
+sunflower oil
+15
+pasta
+85
+butter
+8
+tartar sauce
+40
+tomato sauce
+100
+hot peppers
+10
+smoothie_names
+orange juice
+250
+protien powder
+100
+strawberries
+80
+pasta and chicken thighs_names
+chicken thighs
+400
+sunflower oil
+15
+pasta
+85
+butter
+8
+tomato sauce
+100
+chicken sandwhich_names
+chicken thighs
+80
+costco bun
+100

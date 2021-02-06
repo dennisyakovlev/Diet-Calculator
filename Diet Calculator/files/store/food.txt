@@ -1,0 +1,60 @@
+tilapia_names
+tilapia
+100
+cod_names
+cod
+100
+porkchop_names
+porkchop
+100
+tartar sauce_names
+tartar sauce
+100
+hot peppers_names
+hot peppers
+100
+orange juice_names
+orange juice
+100
+bacon_names
+bacon
+100
+milk_names
+milk
+100
+strawberries_names
+strawberries
+100
+butter_names
+butter
+100
+broccoli_names
+broccoli
+100
+costco bun_names
+costco bun
+100
+protien powder_names
+protien powder
+100
+egg_names
+egg
+100
+pasta_names
+pasta
+100
+tomato sauce_names
+tomato sauce
+100
+sunflower oil_names
+sunflower oil
+100
+chicken thighs_names
+chicken thighs
+100
+franks sauce_names
+franks sauce
+100
+tomato_names
+tomato
+100
