@@ -549,6 +549,7 @@ class Main:
     def __print_all(self, file):
 
         allNames = file.get_all()
+        sorted(allNames)
         print()
         for item in allNames:
             print(item)
