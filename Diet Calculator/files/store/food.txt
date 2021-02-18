@@ -43,9 +43,6 @@ egg
 pasta_names
 pasta
 100
-tomato sauce_names
-tomato sauce
-100
 sunflower oil_names
 sunflower oil
 100
@@ -57,4 +54,25 @@ franks sauce
 100
 tomato_names
 tomato
+100
+canned chicken_names
+canned chicken
+100
+popeyes sandwhich_names
+popeyes sandwhich
+100
+sugar_names
+sugar
+100
+flour_names
+flour
+100
+popeyes fries large_names
+popeyes fries large
+100
+popeyes buttermilk ranch_names
+popeyes buttermilk ranch
+100
+rye bread_names
+rye bread
 100

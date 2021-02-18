@@ -38,7 +38,41 @@ protien powder
 100
 strawberries
 80
-pasta and chicken thighs_names
+chicken sandwhich_names
+chicken thighs
+80
+costco bun
+100
+2 egg sandwhich_names
+egg
+200
+costco bun
+200
+bacon
+54
+tomato
+50
+broccoli
+100
+pasta and cod, 2 days_names
+cod
+600
+tomato sauce
+100
+butter
+8
+sunflower oil
+15
+pasta and cod, 3 days_names
+cod
+400
+tomato sauce
+100
+butter
+8
+sunflower oil
+15
+pasta and 5 chicken thighs_names
 chicken thighs
 400
 sunflower oil
@@ -49,8 +83,39 @@ butter
 8
 tomato sauce
 100
-chicken sandwhich_names
-chicken thighs
-80
-costco bun
+cookies 18_names
+flour
+160
+butter
+120
+sugar
+250
+egg
 100
+cookies 6_names
+sugar
+83.33
+butter
+40
+flour
+53.33
+egg
+33.33
+temp_names
+popeyes fries large
+100
+popeyes buttermilk ranch
+100
+chicken thighs
+170
+butter
+10
+sunflower oil
+15
+2 egg, 3 bacon, 100g rye bread_names
+rye bread
+100
+bacon
+78
+egg
+200

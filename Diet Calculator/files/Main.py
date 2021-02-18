@@ -439,6 +439,7 @@ class Main:
                 self.__print_name_error("Food with this name does not exist")
             else:
                 self.foodFile.remove_elem(name)
+                self.nuritionFile.remove_elem(name)
     def __ADD_FOOD(self, name):
 
         if self.foodFile.elem_exists(name):
