@@ -1,21 +1,9 @@
-one_names
-one
+f1_names
+f1
 100
-two_names
-two
+f2_names
+f2
 100
-three_names
-three
-100
-four_names
-four
-100
-five_names
-five
-100s
-yes sir_names
-yes sir
-100
-yes sir_names
-yes sir
+f3_names
+f3
 100

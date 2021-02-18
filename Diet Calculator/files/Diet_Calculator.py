@@ -11,4 +11,4 @@ os.chdir(os.getcwd() + "\store")
 #run program
 m = MainType()
 
-#dish -> get -> one
+#day -> get -> monday

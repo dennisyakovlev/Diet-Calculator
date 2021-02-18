@@ -1,6 +1,3 @@
-one
-two
-three
-four
-fiveyes sir
-yes sir
+f1
+f2
+f3

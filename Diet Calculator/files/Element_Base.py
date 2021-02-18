@@ -10,16 +10,26 @@ class Element_Base:
     #values - list of values to be added to element file
     def __init__(self, name, values):
 
+        can_create = True
         for item in NOT_ALLOWED:
             if item in name:
-                print(name, "contains illegal character", item)
-                sys.exit()
+                can_create = False
+                break
 
-        self.name = name
+        if can_create:
+            self.name = name
 
-        self.values = []
-        for item in values:
-            self.values.append(item)
+            self.values = []
+            for item in values:
+                self.values.append(item)
+        else:
+            self.name = ''
+            self.values = []
+
+    #return whether element was successfully created
+    def is_created(self):
+
+        return (self.name != '') and (self.values != [])
 
     def get_values(self):
 

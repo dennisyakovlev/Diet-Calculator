@@ -19,6 +19,8 @@ class Day(E_Base.Element_Base):
         #                                 {     get first dish elem    } { get the info list  }
         factInfo = [ 0 for _ in range( len(file.get_elem(self.values[0]).get_nutritional_info()) ) ]
 
+        self.__remove_noexist_dish()
+
         #for each name of the dishes that make up the day
         for item in self.values:
             #get dish
@@ -28,3 +30,27 @@ class Day(E_Base.Element_Base):
             factInfo = NutritionType("", factInfo) + NutritionType("", dish.get_nutritional_info())
 
         return factInfo
+
+    #remove any dishes that dont exist from this dish
+    def __remove_noexist_dish(self):
+        dish_file = FileType(CONST.DISH_FILE_NAME, DishType)
+        
+        new_values = []
+        #go through all foods in this dish
+        for item in self.values:
+            #check if food exists
+            if dish_file.elem_exists(item):
+                new_values.append(item)
+        
+        #all the missing foods
+        missing = list(set(self.values) - set(new_values))
+        if len(missing) != 0:
+            #remove the correspoding food and weight of it
+            for dish in missing:
+                index = self.values.index(dish)
+                self.values.pop(index)
+                self.values.pop(index)
+
+            day_file = FileType(CONST.DAY_FILE_NAME, Day)
+            day_file.remove_elem(self.name)
+            day_file.add_elem(Day(self.name, self.values))

@@ -522,11 +522,17 @@ class Main:
 
             nutrition = NutritionType(name, values)
 
+            if not nutrition.is_created():
+                print('\nEnter valid name')
+                return False
+
             if nutrition.is_valid():
                 self.nuritionFile.add_elem(nutrition)
                 return True
-            
+
             print("\nEnter valid values")
+            return False
+            
             return False
     def __CHANGE_NUTRITION(self, name, values):
         
