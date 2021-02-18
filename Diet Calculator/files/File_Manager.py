@@ -1,4 +1,5 @@
 import os
+import warnings
 
 #methods return true on success and false on fail
 class File:
@@ -82,7 +83,7 @@ class File:
         #check to see if there exists an element with the specified name
         namesFile = open(self.namesFileName, "r")
         if self.__check_name(name, namesFile):
-            raise Exception("GET_ELEM - cannot get element of name: " + name)
+            warnings.warn(f'GET_ELEM - cannot get element of name: {name}', RuntimeWarning)
         namesFile.close()
 
         #open the values file
@@ -114,7 +115,7 @@ class File:
         
         namesFile = open(self.namesFileName, "r")
         if self.__check_name(name, namesFile):
-            raise Exception("REMOVE_ELEM - cannot get element of name: " + name)
+            warnings.warn(f'REMOVE_ELEM - cannot get element of name: {name}', RuntimeWarning)
         namesFile.close()
 
         self.__remoe_elem_name(name)

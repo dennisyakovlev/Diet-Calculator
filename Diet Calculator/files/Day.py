@@ -21,10 +21,9 @@ class Day(E_Base.Element_Base):
 
         #for each name of the dishes that make up the day
         for item in self.values:
-
             #get dish
             dish = file.get_elem(item)
-
+            
             #add to total
             factInfo = NutritionType("", factInfo) + NutritionType("", dish.get_nutritional_info())
 

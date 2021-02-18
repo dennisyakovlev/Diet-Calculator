@@ -68,26 +68,6 @@ butter
 10
 sunflower oil
 15
-pasta and 5 chicken thighs_names
-chicken thighs
-400
-sunflower oil
-15
-pasta
-85
-butter
-8
-tomato sauce
-125
-pasta and cod, 2 days_names
-cod
-600
-tomato sauce
-125
-butter
-8
-sunflower oil
-15
 pasta and cod, 3 days_names
 cod
 400
@@ -110,5 +90,23 @@ tartar sauce
 40
 tomato sauce
 125
-hot peppers
-10
+pasta and 5 chicken thighs_names
+chicken thighs
+400
+sunflower oil
+15
+pasta
+85
+butter
+8
+tomato sauce
+125
+pasta and cod, 2 days_names
+cod
+600
+tomato sauce
+125
+butter
+8
+sunflower oil
+15
