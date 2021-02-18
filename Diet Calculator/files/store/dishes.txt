@@ -16,21 +16,6 @@ costco bun
 100
 butter
 5
-pasta and tilapia_names
-tilapia
-460
-sunflower oil
-15
-pasta
-85
-butter
-8
-tartar sauce
-40
-tomato sauce
-100
-hot peppers
-10
 smoothie_names
 orange juice
 250
@@ -54,24 +39,6 @@ tomato
 50
 broccoli
 100
-pasta and cod, 2 days_names
-cod
-600
-tomato sauce
-100
-butter
-8
-sunflower oil
-15
-pasta and cod, 3 days_names
-cod
-400
-tomato sauce
-100
-butter
-8
-sunflower oil
-15
 cookies 18_names
 flour
 160
@@ -111,4 +78,37 @@ pasta
 butter
 8
 tomato sauce
-100
+125
+pasta and cod, 2 days_names
+cod
+600
+tomato sauce
+125
+butter
+8
+sunflower oil
+15
+pasta and cod, 3 days_names
+cod
+400
+tomato sauce
+125
+butter
+8
+sunflower oil
+15
+pasta and tilapia_names
+tilapia
+460
+sunflower oil
+15
+pasta
+85
+butter
+8
+tartar sauce
+40
+tomato sauce
+125
+hot peppers
+10

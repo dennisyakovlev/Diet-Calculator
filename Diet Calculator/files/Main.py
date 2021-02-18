@@ -368,8 +368,8 @@ class Main:
 
                 if comm == "R":
                     
-                    food = info[1].rsplit(' ', 1)[0]
-                    if not food in values:
+                    food = info[1]
+                    if not food in foods:
                         print("\nFood with this name is not in dish.")
                     else:
                         #get index of food name in the list of values comprising the dish
