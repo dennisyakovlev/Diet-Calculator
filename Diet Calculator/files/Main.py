@@ -368,7 +368,7 @@ class Main:
 
                 if comm == "R":
                     
-                    food = info[1]
+                    food = info[1].rsplit(' ', 1)[0]
                     if not food in values:
                         print("\nFood with this name is not in dish.")
                     else:
@@ -380,18 +380,16 @@ class Main:
                         values.pop(index)
                 elif comm == "A":
                     
-                    #check for correct input, skip if input is not correct
-                    if len(info) == 3:
-                        food = info[1]
-                        if food in values:
-                            print("\nFood with this name is already in dish. Try using C.")
-                        elif not self.foodFile.elem_exists(food):
-                            print("\nFood with this name does not exist.")
-                        else:
-                            #check that number is actually number
-                            if info[2].replace(".", "", 1).isnumeric():
-                                values.append(food)
-                                values.append(info[2])
+                    food = info[1].rsplit(' ', 1)[0]
+                    if food in values:
+                        print("\nFood with this name is already in dish. Try using C.")
+                    elif not self.foodFile.elem_exists(food):
+                        print("\nFood with this name does not exist.")
+                    else:
+                        #check that number is actually number
+                        if info[1].rsplit(' ', 1)[1].replace(".", "", 1).isnumeric():
+                            values.append(food)
+                            values.append(info[1].rsplit(' ', 1)[1])
                 elif comm == "C":
                     
                     food = info[1].rsplit(' ', 1)[0]
