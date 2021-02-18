@@ -33,3 +33,8 @@ three
 hmf_names
 one
 100
+temp_names
+yes sir
+200
+two
+50

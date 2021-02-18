@@ -174,17 +174,6 @@ pasta_names
 3.5
 2.3
 13
-tomato sauce_names
-75
-1.5
-0
-0
-0
-540
-12
-3
-6
-3
 sunflower oil_names
 884
 100
@@ -306,14 +295,14 @@ popeyes buttermilk ranch_names
 0
 1
 0
-rye bread_names
-259
-3.3
-0.6
+tomato sauce_names
+40
+1
 0
 0
-660
-48.3
-5.8
-3.85
-8.5
+0
+288
+6.4
+1.6
+3.2
+1.6

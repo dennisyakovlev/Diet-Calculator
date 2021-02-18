@@ -14,7 +14,6 @@ costco bun
 protien powder
 egg
 pasta
-tomato sauce
 sunflower oil
 chicken thighs
 franks sauce
@@ -26,4 +25,4 @@ sugar
 flour
 popeyes fries large
 popeyes buttermilk ranch
-rye bread
+tomato sauce

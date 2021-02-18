@@ -73,6 +73,6 @@ popeyes fries large
 popeyes buttermilk ranch_names
 popeyes buttermilk ranch
 100
-rye bread_names
-rye bread
+tomato sauce_names
+tomato sauce
 100

@@ -394,16 +394,15 @@ class Main:
                                 values.append(info[2])
                 elif comm == "C":
                     
-                    #check for correct input, skip if input is not correct
-                    if len(info) == 3:
-                        food = info[1]
-                        if not food in values:
-                            print("\nFood with this name not in values.")
-                        else:
-                            #check that number is actually number
-                            if info[2].replace(".", "", 1).isnumeric():
-                                #change weight of food
-                                values[values.index(food) + 1] = info[2]
+                    food = info[1].rsplit(' ', 1)[0]
+                    #check food is in the values
+                    if not food in values:
+                        print("\nFood with this name not in values.")
+                    else:
+                        #check that number is actually number
+                        if info[1].rsplit(' ', 1)[1].replace(".", "", 1).isnumeric():
+                            #change weight of food
+                            values[values.index(food) + 1] = info[1].rsplit(' ', 1)[1]
                 elif comm == "":
                     break
                 else:
