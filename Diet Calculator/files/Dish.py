@@ -24,6 +24,8 @@ class Dish(E_Base.Element_Base):
         #                                 {     get first food elem    } { get the info list  }
         factInfo = [ 0 for _ in range( len(file.get_elem(self.values[0]).get_nutritional_info()) ) ]
 
+        self.__remove_noexist_food()
+
         #every second values is the name of a food
         for i in range(0 , len(self.values), 2):
             
@@ -39,6 +41,31 @@ class Dish(E_Base.Element_Base):
             factInfo = NutritionType("", factInfo) + NutritionType("", nutritionalInfo * multiplier)
 
         return factInfo
+
+    #remove any foods that dont exist from this dish
+    def __remove_noexist_food(self):
+        food_file = FileType(CONST.FOOD_FILE_NAME, FoodType)
+        
+        new_values = []
+        #go through all foods in this dish
+        for i in range(0, len(self.values), 2):
+            #check if food exists
+            if food_file.elem_exists(self.values[i]):
+                new_values.append(self.values[i])
+        
+        #all the missing foods
+        missing = list(set([self.values[i] for i in range(0, len(self.values), 2)]) - set(new_values))
+        if len(missing) != 0:
+            #remove the correspoding food and weight of it
+            for food in missing:
+                index = self.values.index(food)
+                self.values.pop(index)
+                self.values.pop(index)
+
+            dish_file = FileType(CONST.DISH_FILE_NAME, Dish)
+            dish_file.remove_elem(self.name)
+            dish_file.add_elem(Dish(self.name, self.values))
+
 
 
 

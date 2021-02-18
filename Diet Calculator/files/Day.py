@@ -23,8 +23,8 @@ class Day(E_Base.Element_Base):
         for item in self.values:
             #get dish
             dish = file.get_elem(item)
-            
-            #add to total
+
+            #add to total if dish get was successful
             factInfo = NutritionType("", factInfo) + NutritionType("", dish.get_nutritional_info())
 
         return factInfo
