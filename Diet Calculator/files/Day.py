@@ -45,10 +45,9 @@ class Day(E_Base.Element_Base):
         #all the missing foods
         missing = list(set(self.values) - set(new_values))
         if len(missing) != 0:
-            #remove the correspoding food and weight of it
+            #remove the corresponding dish
             for dish in missing:
                 index = self.values.index(dish)
-                self.values.pop(index)
                 self.values.pop(index)
 
             day_file = FileType(CONST.DAY_FILE_NAME, Day)

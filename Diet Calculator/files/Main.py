@@ -7,6 +7,7 @@ from Day import Day as DayType
 
 import sys
 
+#fix day which has dish which has food removed
 class Main:
 
     def __init__(self):
@@ -232,7 +233,7 @@ class Main:
                 else:
                     values.append(dishName)
             
-            if not hadError:
+            if not values == []:
                 self.daysFile.add_elem(DayType(name, values))
     def __CHANGE_DAY(self, name):
         

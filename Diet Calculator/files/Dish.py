@@ -56,7 +56,7 @@ class Dish(E_Base.Element_Base):
         #all the missing foods
         missing = list(set([self.values[i] for i in range(0, len(self.values), 2)]) - set(new_values))
         if len(missing) != 0:
-            #remove the correspoding food and weight of it
+            #remove the corresponding food and weight of it
             for food in missing:
                 index = self.values.index(food)
                 self.values.pop(index)
