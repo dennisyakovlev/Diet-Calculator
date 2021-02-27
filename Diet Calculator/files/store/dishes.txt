@@ -57,17 +57,6 @@ flour
 53.33
 egg
 33.33
-temp_names
-popeyes fries large
-100
-popeyes buttermilk ranch
-100
-chicken thighs
-170
-butter
-10
-sunflower oil
-15
 pasta and cod, 3 days_names
 cod
 400
@@ -90,6 +79,15 @@ tartar sauce
 40
 tomato sauce
 125
+pasta and cod, 2 days_names
+cod
+600
+tomato sauce
+125
+butter
+8
+sunflower oil
+15
 pasta and 5 chicken thighs_names
 chicken thighs
 400
@@ -101,12 +99,8 @@ butter
 8
 tomato sauce
 125
-pasta and cod, 2 days_names
-cod
-600
-tomato sauce
-125
-butter
-8
+temp_names
+egg
+300
 sunflower oil
-15
+10

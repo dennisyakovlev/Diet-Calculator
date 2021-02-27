@@ -5,17 +5,15 @@ smoothie with milk
 tilapia day no smoothie_names
 3 bacon, 2 eggs, buttered bun
 pasta and tilapia
-chicken thighs no smoothie_names
-pasta and chicken thighs
-3 bacon, 2 eggs, buttered bun
 cod day no smoothie_names
 pasta and cod
 3 bacon, 2 eggs, buttered bun
-cod day_names
-smoothie with milk
-3 bacon, 2 eggs, buttered bun
-pasta and cod
 temp_names
 pasta and cod, 3 days
 temp
 cookies 6
+cod day_names
+smoothie with milk
+3 bacon, 2 eggs, buttered bun
+chicken thighs no smoothie_names
+3 bacon, 2 eggs, buttered bun

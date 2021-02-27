@@ -1,5 +1,8 @@
 #constants
 
+#number of items
+NUTRITION_ITEMS = 10
+
 #name of file containing nutrition facts
 NUTRITION_FILE_NAME = "nutrition"
 
