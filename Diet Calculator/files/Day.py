@@ -14,10 +14,7 @@ class Day(E_Base.Element_Base):
 
         file = FileType(CONST.DISH_FILE_NAME, DishType)
 
-        #create list of 0's of length dependant on number of elements
-        #in a nutritional information
-        #                                 {     get first dish elem    } { get the info list  }
-        factInfo = [ 0 for _ in range( len(file.get_elem(self.values[0]).get_nutritional_info()) ) ]
+        factInfo = [0 for _ in range(CONST.NUTRITION_ITEMS)]
 
         self.__remove_noexist_dish()
 
